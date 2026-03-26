@@ -7,30 +7,25 @@ function goScreen(id) {
         s.classList.toggle('hidden', s.id !== id);
     });
     if (id === 'screen-progress') updateProgressStats();
+    if (id === 'screen-home') renderCalendar();
 }
 function goBack() { goScreen(lastScreen); }
 
 function showApkInfo() {
-    const msg = {
-        es: "Para instalar en Android:\n1. Abre esta página en Chrome.\n2. Presiona el menú (⋮).\n3. Elige 'Instalar aplicación'.",
-        en: "To install on Android:\n1. Open this page in Chrome.\n2. Press the menu (⋮).\n3. Choose 'Install app'.",
-        fr: "Pour installer sur Android:\n1. Ouvrez cette page dans Chrome.\n2. Appuyez sur le menu (⋮).\n3. Choisissez 'Installer l'application'.",
-        pt: "Para instalar no Android:\n1. Abra esta página no Chrome.\n2. Pressione o menu (⋮).\n3. Escolha 'Instalar aplicativo'."
-    };
-    alert(msg[localStorage.getItem('fitalpha_lang') || 'es']);
+    alert("Para instalar en Android:\n1. Abre esta página en Chrome.\n2. Menú (⋮) > Instalar aplicación.");
 }
 
 /* === LANGUAGE SYSTEM === */
 const translations = {
     es: { 
         welcome_title: "Tu entrenamiento,<br><span>tu disciplina.</span>",
-        calisthenics: "Calistenia", my_gym: "Mi Gimnasio", running: "Running", breathing: "Respiración", habits: "Hábitos", calculator: "Calculadora", packs: "Packs", settings: "Ajustes", apk: "APK", progress: "Progreso", exercise: "Ejercicio", desc: "Descripción", instructions: "Instrucciones", sets: "Series", rest_timer: "Descanso", start_rest: "Iniciar", lvl_beg: "Principiante", lvl_int: "Intermedio", lvl_adv: "Avanzado", lvl_elite: "Élite", ai_sub: "Fitness IA",
-        search: "Buscar...", all: "Todos", push: "Empuje", pull: "Tracción", legs: "Piernas", core: "Core", cardio: "Cardio", settings_desc: "Cuenta y Opciones", packs_desc: "Rutinas express por zona"
+        calisthenics: "Calistenia", my_gym: "Mi Gimnasio", running: "Running", breathing: "Respiración", habits: "Hábitos", calculator: "Calculadora", packs: "Packs", settings: "Ajustes", apk: "APK", progress: "Progreso", weekly_progress: "PROGRESO SEMANAL",
+        ai_sub: "Gemini Elite IA", search: "Buscar...", all: "Todos"
     },
     en: { 
         welcome_title: "Your training,<br><span>your discipline.</span>",
-        calisthenics: "Calisthenics", my_gym: "My Gym", running: "Running", breathing: "Breathing", habits: "Habits", calculator: "Calculator", packs: "Packs", settings: "Settings", apk: "APK", progress: "Progress", exercise: "Exercise", desc: "Description", instructions: "Instructions", sets: "Sets", rest_timer: "Rest", start_rest: "Start", lvl_beg: "Beginner", lvl_int: "Intermediate", lvl_adv: "Advanced", lvl_elite: "Elite", ai_sub: "Fitness AI",
-        search: "Search...", all: "All", push: "Push", pull: "Pull", legs: "Legs", core: "Core", cardio: "Cardio", settings_desc: "Account and Options", packs_desc: "Express routines by zone"
+        calisthenics: "Calisthenics", my_gym: "My Gym", running: "Running", breathing: "Breathing", habits: "Habits", calculator: "Calculator", packs: "Packs", settings: "Settings", apk: "APK", progress: "Progress", weekly_progress: "WEEKLY PROGRESS",
+        ai_sub: "Gemini Elite AI", search: "Search...", all: "All"
     }
 };
 
@@ -40,28 +35,49 @@ function changeLanguage(lang) {
         const key = el.getAttribute('data-t');
         if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
     });
-    renderExercises(); renderHabits(); renderGym();
-    const s1 = document.getElementById('lang-select-set'); if(s1) s1.value = lang;
+    renderCatFilter(); renderExercises(); renderHabits(); renderGym(); updateProgressStats(); renderCalendar();
 }
 
-/* === EXERCISES === */
+/* === EXERCISES DATABASE === */
 const exercises = [
-    {name:"Flexiones Básicas",cat:"Empuje",level:"principiante",muscle:"Pecho",icon:"💪",desc:"Pecho y tríceps.",steps:["Cuerpo recto","Baja y sube"],sets:"3 x 12"},
-    {name:"Sentadillas",cat:"Piernas",level:"principiante",muscle:"Piernas",icon:"🦵",desc:"Cuádriceps y glúteos.",steps:["Pies al ancho hombros","Baja cadera"],sets:"3 x 15"},
-    {name:"Dominadas",cat:"Tracción",level:"intermedio",muscle:"Espalda",icon:"🆙",desc:"Dorsales y bíceps.",steps:["Sube mentón sobre barra","Baja lento"],sets:"4 x 8"}
+{name:"Flexiones Básicas",cat:"Empuje",level:"principiante",muscle:"Pecho",icon:"💪",desc:"Pecho y tríceps.",steps:["Cuerpo recto","Baja y sube"],sets:"3 x 12"},
+{name:"Sentadillas",cat:"Piernas",level:"principiante",muscle:"Piernas",icon:"🦵",desc:"Cuádriceps y glúteos.",steps:["Pies al ancho hombros","Baja cadera"],sets:"3 x 15"},
+{name:"Dominadas Pronas",cat:"Tracción",level:"intermedio",muscle:"Espalda",icon:"🏗️",desc:"Dorsales y bíceps.",steps:["Sube mentón","Baja lento"],sets:"4 x 8"},
+{name:"Plancha Isométrica",cat:"Core",level:"principiante",muscle:"Abdomen",icon:"🏋️",desc:"Isométrico core.",steps:["Cuerpo recto","Aguanta"],sets:"3 x 30s"},
+{name:"Burpees Militares",cat:"Cardio",level:"elite",muscle:"Cuerpo completo",icon:"⚡",desc:"Máxima potencia cardiovascular.",steps:["Abajo","Flexión","Salto explosivo"],sets:"5 x 20"},
+{name:"Sprint Estático",cat:"Cardio",level:"intermedio",muscle:"Piernas",icon:"🏃",desc:"Quema grasa intenso.",steps:["Eleva rodillas rápido","Mueve brazos"],sets:"4 x 45s"}
 ];
-// Filling 100 exercises
-for(let i=1; i<=97; i++) {
-    exercises.push({name:"Ejercicio Calistenia "+i,cat:"Híbrido",level:i<30?"principiante":i<70?"intermedio":"avanzado",muscle:"Cuerpo",icon:"🔥",desc:"Entrenamiento funcional.",steps:["Enfoque","Control"],sets:"3 x 10"});
-}
+
+const levels = ["principiante", "intermedio", "avanzado", "elite"];
+const catsData = {
+    "Empuje": ["Flexión Diamante", "Fondo en Silla", "Press Hombros", "Flexión Arquera", "Fondo en Barra", "Hindu Pushups", "Pike Pushups", "Pseudo Planche"],
+    "Tracción": ["Chin-ups", "Aussie Pullups", "Front Lever Lean", "Scapula Pullups", "Archer Pullups", "Tuck Front Lever", "Chin Hang", "Wide Grip Pulls"],
+    "Piernas": ["Zancadas", "Pistol Squats Pro", "Bulgarian Squat", "Sumo Squat", "Cosaco Squat", "Salto sobre Cajón", "Wall Sit", "Glint Raises"],
+    "Core": ["Leg Raise", "Hollow Body", "Flutter Kicks", "V-Ups", "Russian Twist", "Plancha Lateral", "Toe Touch", "Dragon Flag Prep"],
+    "Cardio": ["High Knees", "Jumping Jacks", "Mountain Climbers", "Shadow Boxing", "Skipping Pro", "Jump Rope", "Sprawl", "Tuck Jumps"],
+    "Híbrido": ["Clean & Press", "Thrusters", "Manmaker", "Bear Crawl", "Duck Walk", "Animal Flow", "Burpee Pullup", "Star Jump"]
+};
+const catIcons = { "Empuje": "💪", "Tracción": "🆙", "Piernas": "🦵", "Core": "🏋️", "Cardio": "⚡", "Híbrido": "🎯" };
+
+levels.forEach(lvl => {
+    Object.keys(catsData).forEach(c => {
+        catsData[c].forEach((name, i) => {
+            exercises.push({
+                name: name, cat: c, level: lvl, muscle: "Focalizado", icon: catIcons[c],
+                desc: `Rutina de nivel ${lvl} enfocada en ${c}. Diseñada para atletas que buscan la excelencia.`,
+                steps: ["Postura balanceada", "Rango de movimiento completo", "Control de respiración"],
+                sets: lvl === "elite" ? "5 x 10" : "3 x 12"
+            });
+        });
+    });
+});
 
 let currentLevel = 'principiante';
 let currentCat = 'Todos';
-const allCats = ['Todos', 'Empuje', 'Tracción', 'Piernas', 'Core', 'Cardio'];
-
 function renderCatFilter() {
-    const el = document.getElementById('cat-filter');
-    if(el) el.innerHTML = allCats.map(c => `<button class="cat-chip ${c===currentCat?'active':''}" onclick="filterCat(this,'${c}')">${c}</button>`).join('');
+    const el = document.getElementById('cat-filter'); if(!el) return;
+    const all = ['Todos', ...Object.keys(catsData)];
+    el.innerHTML = all.map(c => `<button class="cat-chip ${c===currentCat?'active':''}" onclick="filterCat(this,'${c}')">${c}</button>`).join('');
 }
 function filterLevel(btn) {
     document.querySelectorAll('.level-tab').forEach(t => t.classList.remove('active'));
@@ -77,38 +93,39 @@ function filterCat(btn, cat) {
 }
 
 function renderExercises() {
-    const list = document.getElementById('exercise-list');
-    if(!list) return;
+    const list = document.getElementById('exercise-list'); if(!list) return;
     const filtered = exercises.filter(e => e.level === currentLevel && (currentCat === 'Todos' || e.cat === currentCat));
+    document.getElementById('cal-count-sub').textContent = `${filtered.length} ejercicios disponibles`;
     list.innerHTML = filtered.map(e => `
         <div class="exercise-item" onclick="showDetail(${exercises.indexOf(e)})">
             <div class="ex-icon">${e.icon}</div>
-            <div class="ex-info"><strong>${e.name}</strong><span>${e.cat} • ${e.muscle}</span></div>
+            <div class="ex-info"><strong>${e.name}</strong></div>
             <span class="ex-badge ${e.level}">${e.level.toUpperCase()}</span>
         </div>`).join('');
 }
 
 function showDetail(idx) {
     let e = exercises[idx];
-    if(!e && typeof gymExercises !== 'undefined') e = gymExercises[idx];
+    if(!e && typeof gymExercises !== 'undefined') e = gymExercises[idx-exercises.length];
     if(!e) return;
     document.getElementById('detail-name').textContent = e.name;
+    document.getElementById('detail-level').textContent = e.level ? e.level.toUpperCase() : 'GYM';
+    document.getElementById('detail-cat').textContent = e.cat || 'Fuerza';
+    document.getElementById('detail-muscle').textContent = e.muscle || 'Varios';
     document.getElementById('detail-desc').textContent = e.desc;
     document.getElementById('detail-steps').innerHTML = (e.steps || ["Control"]).map(s => `<li>${s}</li>`).join('');
     
-    const img = document.getElementById('exercise-real-img');
-    let imgId = "1534438327202-c02f247d1b11"; 
-    if(e.cat === 'Empuje') imgId = "1571019613484-1b0a889b703e";
-    if(img) img.src = `https://images.unsplash.com/photo-${imgId}?auto=format&fit=crop&q=80&w=800`;
-    
+    const rMap = { principiante: 60, intermedio: 90, avanzado: 120, elite: 150 };
+    restInitialTime = rMap[e.level] || 60;
+    currentRestTime = restInitialTime;
+    resetRestTimer();
     goScreen('screen-exercise-detail');
 }
 
-/* === AURORA DRAGGABLE AI === */
+/* === AURORA DRAGGABLE AI (GEMINI CORE) === */
 let isDragging = false, startX, startY, initialX, initialY;
 const bubble = document.getElementById('aurora-btn');
-bubble.addEventListener('mousedown', dStart);
-bubble.addEventListener('touchstart', dStart, {passive:false});
+bubble.addEventListener('mousedown', dStart); bubble.addEventListener('touchstart', dStart, {passive:false});
 
 function dStart(e) {
     isDragging = false; const p = e.touches ? e.touches[0] : e;
@@ -135,18 +152,26 @@ function toggleAurora() { if(!isDragging) document.getElementById('aurora-chat')
 function toggleWidget(hide) {
     bubble.style.display = hide ? 'none' : 'flex';
     document.getElementById('restore-widget-btn').style.display = hide ? 'flex' : 'none';
-    if(hide) document.getElementById('aurora-chat').classList.remove('active');
 }
 function checkAuroraKey(e) { if(e.key==='Enter') sendAurora(); }
 function sendAurora() {
     const inp = document.getElementById('aurora-input');
     const val = inp.value.trim().toLowerCase(); if(!val) return;
     addMsg(inp.value, 'user'); inp.value = '';
+    
     setTimeout(() => {
-        let r = "La disciplina es el puente entre las metas y los logros.";
-        if(val.includes('hola')) r = "¡Hola! Soy Coach Aurora. ¿Lista para superar tus límites hoy?";
+        let r = "Analizando con núcleos Gemini... Procesa tu objetivo.";
+        if(val.includes('triste') || val.includes('ánimo')) {
+            r = "Entiendo. El cortisol está alto. Mi directiva es: 10 burpees ahora. La acción física precede a la emoción. ¡Muévete!";
+        } else if(val.includes('plan') || val.includes('rutina')) {
+            r = "Protocolo de entrenamiento generado. Te sugiero el Pack 'Full Body' para maximizar la síntesis proteica hoy.";
+        } else if(val.includes('disciplina')) {
+            r = "La disciplina es el combustible de los campeones. Quien no se domina a sí mismo, será dominado por sus impulsos.";
+        } else {
+            r = "Como tu IA Gemini Elite, te recuerdo que la consistencia es la única métrica que importa. Sigue entrenando.";
+        }
         addMsg(r, 'ai');
-    }, 800);
+    }, 1000);
 }
 function addMsg(t, type) {
     const h = document.getElementById('aurora-history');
@@ -154,98 +179,78 @@ function addMsg(t, type) {
     h.appendChild(m); h.scrollTop = h.scrollHeight;
 }
 
-/* === HABITS === */
+/* === HABITS & CALENDAR === */
 const habitData = {
     entrenamiento: [{id:'h1',title:'Entreno 30m',desc:'Fuerza/Cardio'},{id:'h2',title:'10k Pasos',desc:'Movilidad'}],
     nutricion: [{id:'h3',title:'Agua 3L',desc:'Hidratación'},{id:'h4',title:'No Azúcar',desc:'Salud'}],
     mente: [{id:'h5',title:'Meditación',desc:'Paz mental'},{id:'h6',title:'Lectura',desc:'Conocimiento'}],
     sueno: [{id:'h7',title:'8h Sueño',desc:'Recuperación'},{id:'h8',title:'No Pantallas',desc:'Descanso'}]
 };
-function showHabitSection(c) {
-    document.querySelectorAll('.habit-section').forEach(s => s.classList.add('hidden'));
-    document.getElementById('habit-'+c).classList.remove('hidden');
-    document.querySelectorAll('#screen-habits .level-tab').forEach(t => t.classList.toggle('active', t.textContent.toLowerCase().includes(c.substring(0,3))));
-}
 function renderHabits() {
     Object.keys(habitData).forEach(cat => {
         const el = document.getElementById('habits-' + cat);
         if(el) el.innerHTML = habitData[cat].map(h => `<div class="habit-item"><label class="custom-checkbox"><input type="checkbox" onchange="saveHabit('${h.id}',this.checked)" ${localStorage.getItem(h.id)==='true'?'checked':''}><span class="checkmark"></span><div class="habit-info"><strong>${h.title}</strong><span>${h.desc}</span></div></label></div>`).join('');
     });
 }
-function saveHabit(id,v){ localStorage.setItem(id,v); updateProgressStats(); }
+function saveHabit(id,v){ localStorage.setItem(id,v); updateProgressStats(); renderCalendar(); }
 
-/* === GYM === */
-const gymExercises = [];
-for(let i=1; i<=100; i++) gymExercises.push({name:"Gimnasio Ex "+i, cat:"Pesas", muscle:"Músculo "+i, icon:"🏋️", desc:"Entrenamiento de fuerza con peso.", steps:["Carga","Ejecuta"]});
-function filterGym(btn) {
-    document.querySelectorAll('#gym-level-tabs .level-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    renderGym();
+function renderCalendar() {
+    const daysArr = ['L','M','M','J','V','S','D'];
+    const today = new Date().getDay();
+    const adjToday = today === 0 ? 6 : today - 1;
+    const calWrap = document.getElementById('usage-calendar'); if(!calWrap) return;
+    
+    calWrap.innerHTML = daysArr.map((d, i) => `<div class="cal-day ${i === adjToday ? 'today active' : ''}">${d}</div>`).join('');
+    const s = localStorage.getItem('fitalpha_streak') || 1;
+    const el = document.getElementById('streak-count-home'); if(el) el.innerHTML = `${s} 🔥`;
 }
+
+/* === PACKS & GYM === */
+function loadPack(type) {
+    const list = document.getElementById('pack-exercise-list'); if(!list) return;
+    let filtered = exercises.filter(e => type === 'full' ? true : e.cat.toLowerCase().includes(type.toLowerCase())).slice(0,12);
+    list.innerHTML = `<h3 style="margin:20px 0 10px">Rutina Pack: ${type.toUpperCase()}</h3>` + filtered.map(e => `
+        <div class="exercise-item" onclick="showDetail(${exercises.indexOf(e)})">
+            <div class="ex-icon">${e.icon}</div>
+            <div class="ex-info"><strong>${e.name}</strong></div>
+        </div>`).join('');
+}
+
+const gymExercises = [];
+for(let i=1; i<=100; i++) gymExercises.push({name:"Gym Pro "+i, cat:"Pesas", muscle:"Músculo "+i, icon:"🏋️", desc:"Entrenamiento de carga técnica.", steps:["Posición","Esfuerzo"]});
 function renderGym() {
     const list = document.getElementById('gym-list'); if(!list) return;
-    list.innerHTML = gymExercises.slice(0,20).map(e => `<div class="gym-item" onclick="showDetail(${exercises.length + gymExercises.indexOf(e)})"><div class="gym-icon">🏋️</div><div class="ex-info"><strong>${e.name}</strong><span>${e.muscle}</span></div></div>`).join('');
+    document.getElementById('gym-count-sub').textContent = `100 ejercicios disponibles`;
+    list.innerHTML = gymExercises.slice(0,25).map(e => `<div class="gym-item" onclick="showDetail(${exercises.length + gymExercises.indexOf(e)})"><div class="gym-icon">🏋️</div><div class="ex-info"><strong>${e.name}</strong><span>${e.muscle}</span></div></div>`).join('');
 }
 
-/* === CALCULATOR === */
-function calculateBMI() {
-    const w = parseFloat(document.getElementById('calc-weight').value);
-    const h = parseFloat(document.getElementById('calc-height').value) / 100;
-    if(w && h) {
-        const bmi = (w / (h * h)).toFixed(1);
-        document.getElementById('bmi-value').textContent = bmi;
-        document.getElementById('calc-results').classList.remove('hidden');
-        let cat = "Normal"; if(bmi < 18.5) cat = "Bajo"; if(bmi > 25) cat = "Sobrepeso"; if(bmi > 30) cat = "Obesidad";
-        document.getElementById('bmi-cat').textContent = cat;
-    }
+/* === TIMER & UTILS === */
+let restInterval, restInitialTime = 60, currentRestTime = 60;
+function resetRestTimer() {
+    if(restInterval) { clearInterval(restInterval); restInterval = null; }
+    document.getElementById('rest-start-btn').innerHTML = '<i class="fa-solid fa-play"></i> Iniciar';
+    document.getElementById('rest-progress-circle').style.strokeDashoffset = 276;
+    const m = Math.floor(restInitialTime/60), s = restInitialTime%60;
+    document.getElementById('rest-time-display').textContent = `${m}:${s<10?'0':''}${s}`;
 }
-
-/* === BREATHING === */
-let breathTimer;
-function showBreathingMode(m) {
-    const info = { box:"Inhala 4s, Retén 4s, Exhala 4s, Retén 4s.", "478":"Inhala 4s, Retén 7s, Exhala 8s.", fire:"Respiraciones rápidas y fuertes.", calm:"Inhala lento, exhala muy lento." };
-    document.getElementById('breath-info').textContent = info[m];
-    document.querySelectorAll('#screen-breathing .level-tab').forEach(t => t.classList.toggle('active', t.getAttribute('onclick').includes(m)));
+function startRestTimer() {
+    const btn = document.getElementById('rest-start-btn');
+    if(restInterval) { resetRestTimer(); return; }
+    btn.innerHTML = '<i class="fa-solid fa-stop"></i> Detener';
+    restInterval = setInterval(() => {
+        currentRestTime--;
+        const m = Math.floor(currentRestTime/60), s = currentRestTime%60;
+        document.getElementById('rest-time-display').textContent = `${m}:${s<10?'0':''}${s}`;
+        document.getElementById('rest-progress-circle').style.strokeDashoffset = 276 - (currentRestTime/restInitialTime)*276;
+        if(currentRestTime <= 0) { resetRestTimer(); alert("¡Descanso terminado!"); }
+    }, 1000);
 }
-function toggleBreathing() {
-    const btn = document.getElementById('breath-start-btn');
-    if(btn.innerHTML.includes('Iniciar')) {
-        btn.innerHTML = '<i class="fa-solid fa-stop"></i> Detener';
-        // Simulación simple
-        let count = 0; document.getElementById('breath-phase').textContent = "Inhala";
-        breathTimer = setInterval(() => { count++; document.getElementById('breath-count').textContent = count % 5; }, 1000);
-    } else {
-        btn.innerHTML = '<i class="fa-solid fa-play"></i> Iniciar';
-        clearInterval(breathTimer); document.getElementById('breath-phase').textContent = "Listo"; document.getElementById('breath-count').textContent = "";
-    }
-}
-
-/* === RUNNING === */
-function logRun() {
-    const km = parseFloat(document.getElementById('run-km').value || 0);
-    let total = parseFloat(localStorage.getItem('run_total') || 0) + km;
-    localStorage.setItem('run_total', total);
-    document.getElementById('run-total-km').textContent = total.toFixed(1);
-    document.getElementById('run-km').value = '';
-}
-function showRunSec(id) {
-    document.getElementById('run-stretch').classList.toggle('hidden', id !== 'stretch');
-    document.getElementById('run-hydra').classList.toggle('hidden', id !== 'hydra');
-    document.querySelectorAll('#screen-running .level-tab').forEach(t => t.classList.toggle('active', t.getAttribute('onclick').includes(id)));
-}
-
-/* === UTILS === */
-function resetAllData() { if(confirm("¿Borrar todos los datos?")) { localStorage.clear(); location.reload(); } }
 function updateProgressStats() {
-    document.getElementById('stat-days').textContent = localStorage.getItem('fitalpha_streak') || 1;
+    const s = localStorage.getItem('fitalpha_streak') || 1;
+    document.getElementById('stat-days').innerHTML = `${s} <span style="font-size:0.8em">🔥</span>`;
 }
-function toggleExerciseImage() {
-    const v = document.getElementById('exercise-image-wrap');
-    v.style.display = v.style.display === 'block' ? 'none' : 'block';
-}
+function resetAllData() { if(confirm("¿Borrar todos los datos?")) { localStorage.clear(); location.reload(); } }
 
 /* === INIT === */
 const currentLang = localStorage.getItem('fitalpha_lang') || 'es';
-changeLanguage(currentLang);
-renderCatFilter(); renderExercises(); renderHabits(); renderGym(); updateProgressStats();
-document.getElementById('run-total-km').textContent = parseFloat(localStorage.getItem('run_total') || 0).toFixed(1);
+changeLanguage(currentLang); renderCalendar();

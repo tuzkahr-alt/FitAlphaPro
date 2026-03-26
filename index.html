@@ -18,20 +18,24 @@
     <div class="screen active" id="screen-home">
         <header class="glass-header">
             <div class="logo">FIT<span>ALPHA</span> <em>PRO</em></div>
-            <div style="margin-left:auto; display:flex; gap:10px">
-                 <button class="icon-btn" onclick="toggleWidget(false)" style="background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--dim); width:32px; height:32px; border-radius:50%; display:none" id="restore-widget-btn"><i class="fa-solid fa-robot"></i></button>
+            <div style="margin-left:auto; display:flex; gap:12px; align-items:center">
+                 <button class="back-btn" onclick="goScreen('screen-settings')" style="background:rgba(224,36,163,0.1); border-color:var(--primary); color:var(--primary); width:32px; height:32px"><i class="fa-solid fa-gear"></i></button>
+                 <button class="back-btn" onclick="showApkInfo()" style="background:rgba(0,153,255,0.1); border-color:var(--blue); color:var(--blue); width:32px; height:32px"><i class="fa-solid fa-cloud-arrow-down"></i></button>
+                 <button class="back-btn" onclick="toggleWidget(false)" style="background:rgba(255,184,77,0.1); border-color:var(--accent); color:var(--accent); width:32px; height:32px; display:none" id="restore-widget-btn"><i class="fa-solid fa-robot"></i></button>
             </div>
         </header>
         <div class="home-content">
             <div class="home-welcome">
                 <h2 data-t="welcome_title">Tu entrenamiento,<br><span>tu disciplina.</span></h2>
             </div>
-            <div class="quote-bubble" id="daily-quote-wrap">
-                <div class="qb-icon" id="qb-icon">💡</div>
-                <div class="qb-content">
-                    <p id="qb-text">Cargando pensamiento del día...</p>
+            <!-- WEEKLY PROGRESS DASHBOARD -->
+            <div class="calendar-card" style="margin-top:20px">
+                <div class="cal-title"><span data-t="weekly_progress">PROGRESO SEMANAL</span> <span id="streak-count-home">1 🔥</span></div>
+                <div class="calendar-row" id="usage-calendar">
+                    <!-- JS: L M M J V S D -->
                 </div>
             </div>
+
             <div class="home-menu">
                 <button class="home-card" onclick="goScreen('screen-workouts')">
                     <div class="hc-icon" style="background:linear-gradient(135deg,#e024a3,#4208a0)"><i class="fa-solid fa-dumbbell"></i></div>
@@ -68,17 +72,6 @@
                     <div class="hc-text"><strong data-t="packs">Entrena por Packs</strong><span data-t="packs_desc">Rutinas express por zona</span></div>
                     <i class="fa-solid fa-chevron-right hc-arrow"></i>
                 </button>
-                <div style="display:flex; gap:10px; margin-top:10px">
-                    <button class="home-card" style="flex:1" onclick="goScreen('screen-settings')">
-                        <div class="hc-icon" style="background:rgba(255,255,255,0.1)"><i class="fa-solid fa-gear"></i></div>
-                        <div class="hc-text"><strong data-t="settings">Ajustes</strong><span data-t="settings_desc">Cuenta y Opciones</span></div>
-                        <i class="fa-solid fa-chevron-right hc-arrow"></i>
-                    </button>
-                    <button class="home-card" style="width:70px; display:flex; flex-direction:column; justify-content:center; align-items:center; border-color:var(--primary); background:rgba(224,36,163,0.1); padding:0; flex-shrink:0" onclick="showApkInfo()">
-                        <i class="fa-solid fa-download" style="color:var(--primary); font-size:1.2rem; margin-bottom:5px"></i>
-                        <span style="font-size:0.65rem; color:#fff; font-weight:800" data-t="apk">APK</span>
-                    </button>
-                </div>
             </div>
             <div class="home-footer">
                 <span>Producto Nacional, Chile — 2026</span>
@@ -90,7 +83,10 @@
     <div class="screen hidden" id="screen-workouts">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="calisthenics">Calistenia</h1>
+            <div class="header-titles">
+                <h1 data-t="calisthenics">Calistenia</h1>
+                <span id="cal-count-sub" class="header-sub">0 ejercicios disponibles</span>
+            </div>
         </header>
         <!-- Level Tabs -->
         <div class="level-tabs">
@@ -358,7 +354,10 @@
     <div class="screen hidden" id="screen-gym">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="my_gym">Mi Gimnasio</h1>
+            <div class="header-titles">
+                <h1 data-t="my_gym">Mi Gimnasio</h1>
+                <span id="gym-count-sub" class="header-sub">0 ejercicios disponibles</span>
+            </div>
         </header>
         <div class="level-tabs" id="gym-level-tabs">
             <button class="level-tab active" data-level="musculacion" onclick="filterGym(this)">Musculación</button>
