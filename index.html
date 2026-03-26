@@ -118,13 +118,27 @@
             <div class="exercise-image-view" id="exercise-image-wrap">
                 <img src="" id="exercise-real-img" alt="Técnica del ejercicio">
             </div>
-            <!-- META PILLS -->
-            <div class="detail-meta">
-                <span class="meta-pill" id="detail-level"></span>
-                <span class="meta-pill" id="detail-cat"></span>
-                <span class="meta-pill" id="detail-muscle"></span>
-                <span class="meta-pill" id="detail-time" style="background:rgba(0,153,255,0.1); border-color:var(--blue); color:var(--blue)"><i class="fa-solid fa-clock"></i> 5 min</span>
+            <div class="exercise-hero" id="detail-hero">💪</div>
+            <div class="header-titles" style="margin-left:0; margin-bottom:15px">
+                <h2 id="detail-name">Flexiones</h2>
+                <div class="detail-meta">
+                    <span class="meta-pill" id="detail-level">ELITE</span>
+                    <span class="meta-pill" id="detail-cat">EMPUJE</span>
+                    <span class="meta-pill" id="detail-muscle">PECHO</span>
+                </div>
             </div>
+            
+            <!-- DIDACTIC REPS COUNTER -->
+            <div class="detail-card reps-master">
+                <h3 data-t="target_sets">Objetivo de la Serie</h3>
+                <div class="reps-control">
+                    <button onclick="changeReps(-1)"><i class="fa-solid fa-minus"></i></button>
+                    <div class="reps-display"><span id="current-reps">12</span> <small>REPS</small></div>
+                    <button onclick="changeReps(1)"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <button class="btn-calc" style="width:100%; margin-top:15px" onclick="logSet()"><i class="fa-solid fa-check"></i> <span data-t="complete_set">Completar Serie</span></button>
+            </div>
+            <span class="meta-pill" id="detail-time" style="background:rgba(0,153,255,0.1); border-color:var(--blue); color:var(--blue)"><i class="fa-solid fa-clock"></i> 5 min</span>
             <!-- REST TIMER -->
             <div class="rest-timer-card">
                 <div class="rest-timer-header">
@@ -435,61 +449,41 @@
     <div class="screen hidden" id="screen-packs">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="packs">Packs de Entrenamiento</h1>
+            <div class="header-titles">
+                <h1 data-t="packs">Master Packs 1h</h1>
+                <span class="header-sub">Sincronización Científica</span>
+            </div>
         </header>
         <div class="page-content">
             <div class="pack-grid">
-                <div class="pack-card" onclick="loadPack('lower')">
-                    <i class="fa-solid fa-person-arrow-down-to-line"></i>
-                    <strong>Leg Day</strong>
-                    <span>Piernas y Glúteos</span>
+                <div class="pack-card" onclick="loadPack('full-sci')">
+                    <i class="fa-solid fa-dna"></i>
+                    <strong>Protocolo FullBody</strong>
+                    <span data-t="sci_desc">Eje Hormonal + Potencia</span>
                 </div>
-                <div class="pack-card" onclick="loadPack('upper')">
-                    <i class="fa-solid fa-dumbbell"></i>
-                    <strong>Torso Superior</strong>
-                    <span>Pecho y Espalda</span>
+                <div class="pack-card" onclick="loadPack('upper-sci')">
+                    <i class="fa-solid fa-shield-heart"></i>
+                    <strong>Torso Hipertrofia</strong>
+                    <span data-t="sci_desc">Volumen Basado en Evidencia</span>
                 </div>
-                <div class="pack-card" onclick="loadPack('core')">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <strong>Núcleo (Core)</strong>
-                    <span>Abdomen y Estabilidad</span>
+                <div class="pack-card" onclick="loadPack('lower-sci')">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                    <strong>Tren Inferior Pro</strong>
+                    <span data-t="sci_desc">Mecánica Explosiva</span>
                 </div>
-                <div class="pack-card" onclick="loadPack('full')">
-                    <i class="fa-solid fa-bolt"></i>
-                    <strong>Full Body</strong>
-                    <span>Cuerpo Completo</span>
+                <div class="pack-card" onclick="loadPack('hybrid-sci')">
+                    <i class="fa-solid fa-fire-glow"></i>
+                    <strong>Metabólico 1H</strong>
+                    <span data-t="sci_desc">Máxima Oxidación</span>
                 </div>
             </div>
-            <div id="pack-exercise-list" style="margin-top:20px"></div>
+            <div id="pack-exercise-list"></div>
         </div>
     </div>
 
-    <!-- AURORA ASSISTANT (ELITE TRAINER) -->
-    <div class="aurora-bubble" id="aurora-btn" onclick="toggleAurora()" style="top:20px; right:20px; bottom:auto">
-        <div class="drag-handle" style="position:absolute; inset:0; opacity:0"></div>
-    </div>
-    <div class="aurora-chat" id="aurora-chat">
-        <div class="aurora-header">
-            <div class="avatar"></div>
-            <div style="flex:1">
-                <strong id="aurora-title">Coach Aurora</strong>
-                <div style="font-size:0.75rem; color:var(--accent); font-weight:600" data-t="ai_sub">Elite Fitness IA</div>
-            </div>
-            <div style="display:flex; gap:10px; align-items:center">
-                <i class="fa-solid fa-minus" style="cursor:pointer; opacity:0.6" onclick="toggleWidget(true)"></i>
-                <i class="fa-solid fa-xmark" style="cursor:pointer; opacity:0.6" onclick="toggleAurora()"></i>
-            </div>
-        </div>
-        <div class="aurora-history" id="aurora-history">
-            <div class="msg ai">¡Hola! Soy Aurora, tu entrenadora de élite. Estoy aquí para llevar tu disciplina al siguiente nivel. ¿En qué puedo ayudarte hoy?</div>
-        </div>
-        <div class="aurora-input-bar">
-            <input type="text" class="aurora-input" id="aurora-input" placeholder="Pregúntale a Aurora..." onkeypress="checkAuroraKey(event)">
-            <button class="aurora-send" onclick="sendAurora()">
-                <i class="fa-solid fa-paper-plane"></i>
-            </button>
-        </div>
-    </div>
+    <!-- SOUND EFFECTS -->
+    <audio id="snd-click" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
+    <audio id="snd-end" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3"></audio>
 
 </div><!-- end app-container -->
 

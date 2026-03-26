@@ -8,24 +8,27 @@ function goScreen(id) {
     });
     if (id === 'screen-progress') updateProgressStats();
     if (id === 'screen-home') renderCalendar();
+    playSnd('snd-click');
 }
 function goBack() { goScreen(lastScreen); }
 
-function showApkInfo() {
-    alert("Para instalar en Android:\n1. Abre esta página en Chrome.\n2. Menú (⋮) > Instalar aplicación.");
+/* === SOUNDS === */
+function playSnd(id) {
+    const s = document.getElementById(id);
+    if(s) { s.currentTime = 0; s.play().catch(()=>{}); }
 }
 
-/* === LANGUAGE SYSTEM === */
+/* === LANGUAGE SYSTEM (FIXED) === */
 const translations = {
     es: { 
         welcome_title: "Tu entrenamiento,<br><span>tu disciplina.</span>",
-        calisthenics: "Calistenia", my_gym: "Mi Gimnasio", running: "Running", breathing: "Respiración", habits: "Hábitos", calculator: "Calculadora", packs: "Packs", settings: "Ajustes", apk: "APK", progress: "Progreso", weekly_progress: "PROGRESO SEMANAL",
-        ai_sub: "Gemini Elite IA", search: "Buscar...", all: "Todos"
+        calisthenics: "Calistenia", my_gym: "Gimnasio", running: "Running", breathing: "Respiración", habits: "Hábitos", calculator: "Calculadora", packs: "Master Packs 1h", settings: "Ajustes", apk: "APK", progress: "Progreso", weekly_progress: "PROGRESO SEMANAL",
+        search: "Buscar...", all: "Todos", target_sets: "Objetivo de la Serie", complete_set: "Completar Serie", sci_desc: "Eje Científico 60m", water_tips: "Tips Hidratación"
     },
     en: { 
         welcome_title: "Your training,<br><span>your discipline.</span>",
-        calisthenics: "Calisthenics", my_gym: "My Gym", running: "Running", breathing: "Breathing", habits: "Habits", calculator: "Calculator", packs: "Packs", settings: "Settings", apk: "APK", progress: "Progress", weekly_progress: "WEEKLY PROGRESS",
-        ai_sub: "Gemini Elite AI", search: "Search...", all: "All"
+        calisthenics: "Calisthenics", my_gym: "Gym", running: "Running", breathing: "Breathing", habits: "Habits", calculator: "Calculator", packs: "Master Packs 1h", settings: "Settings", apk: "APK", progress: "Progress", weekly_progress: "WEEKLY PROGRESS",
+        search: "Search...", all: "All", target_sets: "Series Target", complete_set: "Complete Set", sci_desc: "Scientific 60m", water_tips: "Hydration Tips"
     }
 };
 
@@ -35,38 +38,30 @@ function changeLanguage(lang) {
         const key = el.getAttribute('data-t');
         if (translations[lang] && translations[lang][key]) el.innerHTML = translations[lang][key];
     });
+    // Global Refresh
     renderCatFilter(); renderExercises(); renderHabits(); renderGym(); updateProgressStats(); renderCalendar();
 }
 
 /* === EXERCISES DATABASE === */
-const exercises = [
-{name:"Flexiones Básicas",cat:"Empuje",level:"principiante",muscle:"Pecho",icon:"💪",desc:"Pecho y tríceps.",steps:["Cuerpo recto","Baja y sube"],sets:"3 x 12"},
-{name:"Sentadillas",cat:"Piernas",level:"principiante",muscle:"Piernas",icon:"🦵",desc:"Cuádriceps y glúteos.",steps:["Pies al ancho hombros","Baja cadera"],sets:"3 x 15"},
-{name:"Dominadas Pronas",cat:"Tracción",level:"intermedio",muscle:"Espalda",icon:"🏗️",desc:"Dorsales y bíceps.",steps:["Sube mentón","Baja lento"],sets:"4 x 8"},
-{name:"Plancha Isométrica",cat:"Core",level:"principiante",muscle:"Abdomen",icon:"🏋️",desc:"Isométrico core.",steps:["Cuerpo recto","Aguanta"],sets:"3 x 30s"},
-{name:"Burpees Militares",cat:"Cardio",level:"elite",muscle:"Cuerpo completo",icon:"⚡",desc:"Máxima potencia cardiovascular.",steps:["Abajo","Flexión","Salto explosivo"],sets:"5 x 20"},
-{name:"Sprint Estático",cat:"Cardio",level:"intermedio",muscle:"Piernas",icon:"🏃",desc:"Quema grasa intenso.",steps:["Eleva rodillas rápido","Mueve brazos"],sets:"4 x 45s"}
-];
-
+const exercises = [];
 const levels = ["principiante", "intermedio", "avanzado", "elite"];
 const catsData = {
-    "Empuje": ["Flexión Diamante", "Fondo en Silla", "Press Hombros", "Flexión Arquera", "Fondo en Barra", "Hindu Pushups", "Pike Pushups", "Pseudo Planche"],
-    "Tracción": ["Chin-ups", "Aussie Pullups", "Front Lever Lean", "Scapula Pullups", "Archer Pullups", "Tuck Front Lever", "Chin Hang", "Wide Grip Pulls"],
-    "Piernas": ["Zancadas", "Pistol Squats Pro", "Bulgarian Squat", "Sumo Squat", "Cosaco Squat", "Salto sobre Cajón", "Wall Sit", "Glint Raises"],
-    "Core": ["Leg Raise", "Hollow Body", "Flutter Kicks", "V-Ups", "Russian Twist", "Plancha Lateral", "Toe Touch", "Dragon Flag Prep"],
-    "Cardio": ["High Knees", "Jumping Jacks", "Mountain Climbers", "Shadow Boxing", "Skipping Pro", "Jump Rope", "Sprawl", "Tuck Jumps"],
-    "Híbrido": ["Clean & Press", "Thrusters", "Manmaker", "Bear Crawl", "Duck Walk", "Animal Flow", "Burpee Pullup", "Star Jump"]
+    "Empuje": ["Flexión Diamante", "Fondo en Silla", "Press Hombros", "Dip Pro", "Archer Pushup"],
+    "Tracción": ["Dominada Prona", "Chin-up", "Aussie Pull", "Front Lever", "Scapula Pull"],
+    "Piernas": ["Sentadilla", "Pistol Squat", "Zancada", "Sumo", "Bulgarian"],
+    "Core": ["Plancha", "L-Sit", "Leg Raise", "Hollow Body", "Russian Twist"],
+    "Cardio": ["Burpee", "Sprint", "Mountain Climber", "Skipping", "Shadow Box"]
 };
 const catIcons = { "Empuje": "💪", "Tracción": "🆙", "Piernas": "🦵", "Core": "🏋️", "Cardio": "⚡", "Híbrido": "🎯" };
 
 levels.forEach(lvl => {
     Object.keys(catsData).forEach(c => {
-        catsData[c].forEach((name, i) => {
+        catsData[c].forEach(name => {
             exercises.push({
                 name: name, cat: c, level: lvl, muscle: "Focalizado", icon: catIcons[c],
-                desc: `Rutina de nivel ${lvl} enfocada en ${c}. Diseñada para atletas que buscan la excelencia.`,
-                steps: ["Postura balanceada", "Rango de movimiento completo", "Control de respiración"],
-                sets: lvl === "elite" ? "5 x 10" : "3 x 12"
+                reps: lvl === "elite" ? 15 : lvl === "avanzado" ? 12 : 10,
+                desc: `Entrenamiento nivel ${lvl}.`,
+                steps: ["Postura balanceada", "Rango completo", "Control"]
             });
         });
     });
@@ -91,11 +86,10 @@ function filterCat(btn, cat) {
     currentCat = cat;
     renderExercises();
 }
-
 function renderExercises() {
     const list = document.getElementById('exercise-list'); if(!list) return;
     const filtered = exercises.filter(e => e.level === currentLevel && (currentCat === 'Todos' || e.cat === currentCat));
-    document.getElementById('cal-count-sub').textContent = `${filtered.length} ejercicios disponibles`;
+    const sub = document.getElementById('cal-count-sub'); if(sub) sub.textContent = `${filtered.length} ejercicios`;
     list.innerHTML = filtered.map(e => `
         <div class="exercise-item" onclick="showDetail(${exercises.indexOf(e)})">
             <div class="ex-icon">${e.icon}</div>
@@ -104,127 +98,98 @@ function renderExercises() {
         </div>`).join('');
 }
 
+/* === DETAIL & REPS === */
 function showDetail(idx) {
     let e = exercises[idx];
     if(!e && typeof gymExercises !== 'undefined') e = gymExercises[idx-exercises.length];
     if(!e) return;
     document.getElementById('detail-name').textContent = e.name;
-    document.getElementById('detail-level').textContent = e.level ? e.level.toUpperCase() : 'GYM';
+    document.getElementById('detail-hero').textContent = e.icon;
+    document.getElementById('detail-level').textContent = (e.level || 'GYM').toUpperCase();
     document.getElementById('detail-cat').textContent = e.cat || 'Fuerza';
     document.getElementById('detail-muscle').textContent = e.muscle || 'Varios';
     document.getElementById('detail-desc').textContent = e.desc;
     document.getElementById('detail-steps').innerHTML = (e.steps || ["Control"]).map(s => `<li>${s}</li>`).join('');
     
+    document.getElementById('current-reps').textContent = e.reps || 12;
+    
     const rMap = { principiante: 60, intermedio: 90, avanzado: 120, elite: 150 };
-    restInitialTime = rMap[e.level] || 60;
+    restInitialTime = rMap[e.level] || 90;
     currentRestTime = restInitialTime;
     resetRestTimer();
     goScreen('screen-exercise-detail');
 }
 
-/* === AURORA DRAGGABLE AI (GEMINI CORE) === */
-let isDragging = false, startX, startY, initialX, initialY;
-const bubble = document.getElementById('aurora-btn');
-bubble.addEventListener('mousedown', dStart); bubble.addEventListener('touchstart', dStart, {passive:false});
-
-function dStart(e) {
-    isDragging = false; const p = e.touches ? e.touches[0] : e;
-    startX = p.clientX; startY = p.clientY;
-    const r = bubble.getBoundingClientRect(); initialX = r.left; initialY = r.top;
-    document.addEventListener('mousemove', dMove); document.addEventListener('touchmove', dMove, {passive:false});
-    document.addEventListener('mouseup', dEnd); document.addEventListener('touchend', dEnd);
+function changeReps(val) {
+    const el = document.getElementById('current-reps');
+    let n = parseInt(el.textContent) + val;
+    if(n < 1) n = 1;
+    el.textContent = n;
+    playSnd('snd-click');
 }
-function dMove(e) {
-    const p = e.touches ? e.touches[0] : e;
-    const dx = p.clientX - startX, dy = p.clientY - startY;
-    if(Math.abs(dx)>10 || Math.abs(dy)>10) {
-        isDragging = true;
-        bubble.style.left = (initialX + dx) + 'px'; bubble.style.top = (initialY + dy) + 'px';
-        bubble.style.right = 'auto'; bubble.style.bottom = 'auto';
-    }
-}
-function dEnd() {
-    document.removeEventListener('mousemove', dMove); document.removeEventListener('touchmove', dMove);
-    document.removeEventListener('mouseup', dEnd); document.removeEventListener('touchend', dEnd);
+function logSet() {
+    playSnd('snd-end');
+    alert("¡Serie completada! Iniciando descanso...");
+    startRestTimer();
 }
 
-function toggleAurora() { if(!isDragging) document.getElementById('aurora-chat').classList.toggle('active'); }
-function toggleWidget(hide) {
-    bubble.style.display = hide ? 'none' : 'flex';
-    document.getElementById('restore-widget-btn').style.display = hide ? 'flex' : 'none';
-}
-function checkAuroraKey(e) { if(e.key==='Enter') sendAurora(); }
-function sendAurora() {
-    const inp = document.getElementById('aurora-input');
-    const val = inp.value.trim().toLowerCase(); if(!val) return;
-    addMsg(inp.value, 'user'); inp.value = '';
+/* === SCIENTIFIC 1-HOUR PACKS === */
+function loadPack(type) {
+    const list = document.getElementById('pack-exercise-list'); if(!list) return;
     
-    setTimeout(() => {
-        let r = "Analizando con núcleos Gemini... Procesa tu objetivo.";
-        if(val.includes('triste') || val.includes('ánimo')) {
-            r = "Entiendo. El cortisol está alto. Mi directiva es: 10 burpees ahora. La acción física precede a la emoción. ¡Muévete!";
-        } else if(val.includes('plan') || val.includes('rutina')) {
-            r = "Protocolo de entrenamiento generado. Te sugiero el Pack 'Full Body' para maximizar la síntesis proteica hoy.";
-        } else if(val.includes('disciplina')) {
-            r = "La disciplina es el combustible de los campeones. Quien no se domina a sí mismo, será dominado por sus impulsos.";
-        } else {
-            r = "Como tu IA Gemini Elite, te recuerdo que la consistencia es la única métrica que importa. Sigue entrenando.";
-        }
-        addMsg(r, 'ai');
-    }, 1000);
-}
-function addMsg(t, type) {
-    const h = document.getElementById('aurora-history');
-    const m = document.createElement('div'); m.className='msg '+type; m.textContent=t;
-    h.appendChild(m); h.scrollTop = h.scrollHeight;
+    // Core Scientific Structure: Warmup(3) -> Power(3) -> Hypertrophy(4) -> Core(2) -> Stretch(1) = 13 total
+    let routine = [];
+    const warmup = exercises.filter(e => e.cat === 'Cardio').slice(0,3);
+    let main = [];
+    
+    if(type === 'full-sci') main = exercises.filter((e,i) => i%4===0).slice(0,8);
+    if(type === 'upper-sci') main = exercises.filter(e => e.cat === 'Empuje' || e.cat === 'Tracción').slice(0,8);
+    if(type === 'lower-sci') main = exercises.filter(e => e.cat === 'Piernas').slice(0,8);
+    if(type === 'hybrid-sci') main = exercises.slice(0,8);
+
+    routine = [...warmup, ...main, ...exercises.filter(e => e.cat === 'Core').slice(0,2)];
+    
+    list.innerHTML = `<h3 style="margin:20px 0 10px; color:var(--primary)">Protocolo Científico (60 min)</h3>` + 
+        routine.map((e, i) => `
+        <div class="exercise-item" onclick="showDetail(${exercises.indexOf(e)})">
+            <span style="font-size:0.7rem; color:var(--accent); font-weight:900; margin-right:10px">${i+1}</span>
+            <div class="ex-icon">${e.icon}</div>
+            <div class="ex-info"><strong>${e.name}</strong></div>
+            <span class="ex-badge ${e.level}" style="font-size:0.6rem">${e.reps} REPS</span>
+        </div>`).join('');
 }
 
-/* === HABITS & CALENDAR === */
-const habitData = {
-    entrenamiento: [{id:'h1',title:'Entreno 30m',desc:'Fuerza/Cardio'},{id:'h2',title:'10k Pasos',desc:'Movilidad'}],
-    nutricion: [{id:'h3',title:'Agua 3L',desc:'Hidratación'},{id:'h4',title:'No Azúcar',desc:'Salud'}],
-    mente: [{id:'h5',title:'Meditación',desc:'Paz mental'},{id:'h6',title:'Lectura',desc:'Conocimiento'}],
-    sueno: [{id:'h7',title:'8h Sueño',desc:'Recuperación'},{id:'h8',title:'No Pantallas',desc:'Descanso'}]
-};
+/* === OTHER MODULES === */
+const gymExercises = [];
+for(let i=1; i<=100; i++) gymExercises.push({name:"Gym Pro "+i, cat:"Pesas", muscle:"Músculo "+i, icon:"🏋️", reps:12, desc:"Carga técnica.", steps:["Posición","Control"]});
+function renderGym() {
+    const list = document.getElementById('gym-list'); if(!list) return;
+    list.innerHTML = gymExercises.slice(0,25).map(e => `<div class="gym-item" onclick="showDetail(${exercises.length + gymExercises.indexOf(e)})"><div class="gym-icon">🏋️</div><div class="ex-info"><strong>${e.name}</strong><span>${e.muscle}</span></div></div>`).join('');
+}
+
 function renderHabits() {
+    const habitData = {
+        entrenamiento: [{id:'h1',title:'Entreno 60m',desc:'Fuerza/Cardio'},{id:'h2',title:'10k Pasos',desc:'Movilidad'}],
+        nutricion: [{id:'h3',title:'Agua 3L',desc:'Hidratación'},{id:'h4',title:'Proteína',desc:'Cena magra'}],
+        mente: [{id:'h5',title:'Dopamina Ayuno',desc:'Sin pantallas'},{id:'h6',title:'Lectura',desc:'Conocimiento'}],
+        sueno: [{id:'h7',title:'8h Sueño',desc:'Recuperación'},{id:'h8',title:'Meditación',desc:'Paz'}]
+    };
     Object.keys(habitData).forEach(cat => {
         const el = document.getElementById('habits-' + cat);
         if(el) el.innerHTML = habitData[cat].map(h => `<div class="habit-item"><label class="custom-checkbox"><input type="checkbox" onchange="saveHabit('${h.id}',this.checked)" ${localStorage.getItem(h.id)==='true'?'checked':''}><span class="checkmark"></span><div class="habit-info"><strong>${h.title}</strong><span>${h.desc}</span></div></label></div>`).join('');
     });
 }
-function saveHabit(id,v){ localStorage.setItem(id,v); updateProgressStats(); renderCalendar(); }
+function saveHabit(id,v){ localStorage.setItem(id,v); updateProgressStats(); renderCalendar(); playSnd('snd-click'); }
 
 function renderCalendar() {
     const daysArr = ['L','M','M','J','V','S','D'];
-    const today = new Date().getDay();
-    const adjToday = today === 0 ? 6 : today - 1;
+    const today = (new Date().getDay() + 6) % 7;
     const calWrap = document.getElementById('usage-calendar'); if(!calWrap) return;
-    
-    calWrap.innerHTML = daysArr.map((d, i) => `<div class="cal-day ${i === adjToday ? 'today active' : ''}">${d}</div>`).join('');
+    calWrap.innerHTML = daysArr.map((d, i) => `<div class="cal-day ${i === today ? 'today active' : ''}">${d}</div>`).join('');
     const s = localStorage.getItem('fitalpha_streak') || 1;
     const el = document.getElementById('streak-count-home'); if(el) el.innerHTML = `${s} 🔥`;
 }
 
-/* === PACKS & GYM === */
-function loadPack(type) {
-    const list = document.getElementById('pack-exercise-list'); if(!list) return;
-    let filtered = exercises.filter(e => type === 'full' ? true : e.cat.toLowerCase().includes(type.toLowerCase())).slice(0,12);
-    list.innerHTML = `<h3 style="margin:20px 0 10px">Rutina Pack: ${type.toUpperCase()}</h3>` + filtered.map(e => `
-        <div class="exercise-item" onclick="showDetail(${exercises.indexOf(e)})">
-            <div class="ex-icon">${e.icon}</div>
-            <div class="ex-info"><strong>${e.name}</strong></div>
-        </div>`).join('');
-}
-
-const gymExercises = [];
-for(let i=1; i<=100; i++) gymExercises.push({name:"Gym Pro "+i, cat:"Pesas", muscle:"Músculo "+i, icon:"🏋️", desc:"Entrenamiento de carga técnica.", steps:["Posición","Esfuerzo"]});
-function renderGym() {
-    const list = document.getElementById('gym-list'); if(!list) return;
-    document.getElementById('gym-count-sub').textContent = `100 ejercicios disponibles`;
-    list.innerHTML = gymExercises.slice(0,25).map(e => `<div class="gym-item" onclick="showDetail(${exercises.length + gymExercises.indexOf(e)})"><div class="gym-icon">🏋️</div><div class="ex-info"><strong>${e.name}</strong><span>${e.muscle}</span></div></div>`).join('');
-}
-
-/* === TIMER & UTILS === */
 let restInterval, restInitialTime = 60, currentRestTime = 60;
 function resetRestTimer() {
     if(restInterval) { clearInterval(restInterval); restInterval = null; }
@@ -242,15 +207,26 @@ function startRestTimer() {
         const m = Math.floor(currentRestTime/60), s = currentRestTime%60;
         document.getElementById('rest-time-display').textContent = `${m}:${s<10?'0':''}${s}`;
         document.getElementById('rest-progress-circle').style.strokeDashoffset = 276 - (currentRestTime/restInitialTime)*276;
-        if(currentRestTime <= 0) { resetRestTimer(); alert("¡Descanso terminado!"); }
+        if(currentRestTime <= 0) { resetRestTimer(); playSnd('snd-end'); alert("¡Descanso terminado!"); }
     }, 1000);
 }
 function updateProgressStats() {
     const s = localStorage.getItem('fitalpha_streak') || 1;
-    document.getElementById('stat-days').innerHTML = `${s} <span style="font-size:0.8em">🔥</span>`;
+    const el = document.getElementById('stat-days'); if(el) el.innerHTML = `${s} 🔥`;
 }
-function resetAllData() { if(confirm("¿Borrar todos los datos?")) { localStorage.clear(); location.reload(); } }
 
 /* === INIT === */
 const currentLang = localStorage.getItem('fitalpha_lang') || 'es';
-changeLanguage(currentLang); renderCalendar();
+changeLanguage(currentLang);
+function calculateBMI() {
+    const w = parseFloat(document.getElementById('calc-weight').value);
+    const h = parseFloat(document.getElementById('calc-height').value) / 100;
+    if(w && h) {
+        const bmi = (w / (h * h)).toFixed(1);
+        document.getElementById('bmi-value').textContent = bmi;
+        document.getElementById('calc-results').classList.remove('hidden');
+        let cat = "Normal"; if(bmi < 18.5) cat = "Bajo"; if(bmi > 25) cat = "Sobrepeso";
+        document.getElementById('bmi-cat').textContent = cat;
+        playSnd('snd-end');
+    }
+}
