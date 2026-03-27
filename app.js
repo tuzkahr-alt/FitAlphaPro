@@ -730,9 +730,41 @@ function showApkInfo() {
 }
 
 /* === INIT === */
+function shareApp() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'FitAlpha Pro',
+            text: '¡Ey! Descarga mi nueva app de entrenamiento. Instálala desde aquí:',
+            url: window.location.href,
+        }).catch(err => showToast("Error al compartir"));
+    } else {
+        const dummy = document.createElement('input');
+        document.body.appendChild(dummy);
+        dummy.value = window.location.href;
+        dummy.select();
+        document.execCommand('copy');
+        document.body.removeChild(dummy);
+        showToast("Enlace copiado al portapapeles. ¡Pégalo en WhatsApp!");
+    }
+}
+
+function initHabits() {
+    const checks = document.querySelectorAll('.habit-check');
+    const stored = JSON.parse(localStorage.getItem('fitalpha_habits') || '[]');
+    checks.forEach((cb, idx) => {
+        cb.checked = stored[idx] || false;
+        cb.addEventListener('change', () => {
+            const current = Array.from(checks).map(c => c.checked);
+            localStorage.setItem('fitalpha_habits', JSON.stringify(current));
+            if(cb.checked) playSnd('snd-click');
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const lang = localStorage.getItem('fitalpha_lang') || 'es';
     changeLanguage(lang);
     renderExercises(); renderGym(); renderDashboard();
+    initHabits();
     showBreathingMode('box'); // Pre-load breathing info panel
 });

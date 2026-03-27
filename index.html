@@ -74,8 +74,20 @@
                     <div class="hc-text"><strong data-t="packs">Master Packs 1h</strong><span data-t="packs_desc">Protocolos científicos</span></div>
                     <i class="fa-solid fa-chevron-right hc-arrow"></i>
                 </button>
+                
+                <!-- ACCIONES RÁPIDAS (Donaciones / Compartir) -->
+                <div class="grid-menu action-cols" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-top:10px;">
+                    <button class="home-card glass-premium" onclick="shareApp()" style="flex-direction:row; padding:15px; text-align:center;">
+                        <div class="hc-icon" style="background:#00c9ff; width:40px; height:40px; font-size:1.1rem; margin-right:10px;"><i class="fa-solid fa-share-nodes"></i></div>
+                        <div class="hc-text" style="text-align:left;"><strong>Compartir</strong></div>
+                    </button>
+                    <button class="home-card glass-premium" onclick="window.open('https://paypal.com/donate','_blank')" style="flex-direction:row; padding:15px; text-align:center;">
+                        <div class="hc-icon" style="background:#ffb84d; width:40px; height:40px; font-size:1.1rem; margin-right:10px;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                        <div class="hc-text" style="text-align:left;"><strong>Donar</strong></div>
+                    </button>
+                </div>
             </div>
-            <div class="home-footer">
+            <div class="home-footer" style="text-align:center; padding:20px 0; opacity:0.6; font-size:0.8rem;">
                 <span data-t="national_product">Producto Nacional, Chile — 2026</span>
             </div>
         </div>
@@ -265,41 +277,89 @@
                 </button>
                 <div class="breath-rounds">
                     <i class="fa-solid fa-rotate"></i>
-                    <span>Rondas completadas:</span> <strong id="breath-rounds">0</strong>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===================== PANTALLA: HÁBITOS ===================== -->
+                    <span>Rondas completadas:</span>    <!-- ===================== PANTALLA: HÁBITOS 10X ===================== -->
     <div class="screen hidden" id="screen-habits">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="habits">Hábitos</h1>
+            <div class="header-titles">
+                <h1 data-t="habits">Hábitos de Éxito</h1>
+                <span class="header-sub">Checklist Diario 10X</span>
+            </div>
         </header>
-        <!-- Sub-tabs -->
-        <div class="level-tabs">
-            <button class="level-tab active" onclick="showHabitSection('entrenamiento')" data-t="hab_train">Entreno</button>
-            <button class="level-tab" onclick="showHabitSection('nutricion')" data-t="hab_nutri">Nutrición</button>
-            <button class="level-tab" onclick="showHabitSection('mente')" data-t="hab_mind">Mente</button>
-            <button class="level-tab" onclick="showHabitSection('sueno')" data-t="hab_sleep">Sueño</button>
+
+        <div class="page-content" style="padding: 20px;">
+            <div class="didactic-hero" style="background: linear-gradient(135deg, #1f013d, #4208a0); padding: 25px; border-radius: 20px; text-align:center; margin-bottom: 25px; border: 1px solid var(--border)">
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">🌟 Rutina Inquebrantable</h2>
+                <p style="font-size: 0.9rem; opacity: 0.8; line-height: 1.5;">El entrenamiento es solo el 20%. Tu verdadero nivel se define fuera del gimnasio. Marca estos 10 hábitos diarios para maximizar tu recuperación, mentalidad y energía.</p>
+            </div>
+
+            <div class="success-habits-list">
+                <!-- Hábito 1 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/3248/3248981.png" alt="Rise" class="habit-img"></div>
+                    <div class="habit-details"><strong>1. Despertar Temprano</strong><span>Sin posponer la alarma. Tu primera victoria.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 2 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/2953/2953058.png" alt="Water" class="habit-img"></div>
+                    <div class="habit-details"><strong>2. Hidratación 3 Litros</strong><span>Agua con sal marina al despertar y constante todo el día.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 3 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/1004/1004300.png" alt="Dumbbell" class="habit-img"></div>
+                    <div class="habit-details"><strong>4. Entrenamiento Intenso</strong><span>Estimula el músculo, rómpelo y progresa.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 4 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/3143/3143642.png" alt="Protein" class="habit-img"></div>
+                    <div class="habit-details"><strong>4. MacroNutrientes Exactos</strong><span>Cumplir la meta proteica sin procesados.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 5 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/3242/3242257.png" alt="Sun" class="habit-img"></div>
+                    <div class="habit-details"><strong>5. Sol y Pasos (10k)</strong><span>Luz solar matutina y movimiento constante (NEAT).</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 6 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/4207/4207214.png" alt="Read" class="habit-img"></div>
+                    <div class="habit-details"><strong>6. Lectura y Aprendizaje</strong><span>15 minutos diarios de libros o podcasts de valor.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 7 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Meditation" class="habit-img"></div>
+                    <div class="habit-details"><strong>7. Respiración y Enfoque</strong><span>5 mins de respiración cuadrada para dominar el estrés.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 8 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/1041/1041865.png" alt="No Phone" class="habit-img"></div>
+                    <div class="habit-details"><strong>8. Detox Digital Nocturno</strong><span>0 pantallas 1 hora antes de ir a dormir.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 9 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/1802/1802871.png" alt="Plan" class="habit-img"></div>
+                    <div class="habit-details"><strong>9. Planificación del Día</strong><span>Escribe tus 3 tareas críticas para el siguiente día.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+                <!-- Hábito 10 -->
+                <div class="habit-item-v2">
+                    <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/3094/3094772.png" alt="Sleep" class="habit-img"></div>
+                    <div class="habit-details"><strong>10. Sueño Profundo (7-8h)</strong><span>Acostarse a la misma hora en completa oscuridad.</span></div>
+                    <input type="checkbox" class="habit-check">
+                </div>
+            </div>
+            
+            <button class="premium-btn" onclick="showToast('¡Progreso de Hábitos guardado! 🔥')" style="margin-top:20px; width:100%;"><i class="fa-solid fa-save"></i> Guardar Progreso Diario</button>
         </div>
-        <div class="page-content">
-            <div class="habit-section active" id="habit-entrenamiento">
-                <div class="section-label" data-t="daily_train">Entrenamiento diario</div>
-                <div class="habit-list" id="habits-entrenamiento"></div>
-            </div>
-            <div class="habit-section hidden" id="habit-nutricion">
-                <div class="section-label" data-t="opt_nutri">Nutrición óptima</div>
-                <div class="habit-list" id="habits-nutricion"></div>
-            </div>
-            <div class="habit-section hidden" id="habit-mente">
-                <div class="section-label" data-t="champ_mind">Mentalidad de campeón</div>
-                <div class="habit-list" id="habits-mente"></div>
-            </div>
-            <div class="habit-section hidden" id="habit-sueno">
-                <div class="section-label" data-t="recov_sleep">Recuperación y sueño</div>
-                <div class="habit-list" id="habits-sueno"></div>
+    </div><span id="breath-rounds">0</span>
+                </div>
             </div>
         </div>
     </div>
@@ -459,31 +519,74 @@
     <div class="screen hidden" id="screen-running">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="running">Running</h1>
-        </header>
-        <div class="page-content">
-            <!-- DISTANCE TRACKER -->
-            <div class="detail-card run-tracker glass-premium">
-                <h3 data-t="run_log">Registro de Carrera</h3>
-                <div class="run-input-group">
-                    <input type="number" id="run-km" placeholder="0.0" step="0.1">
-                    <span>km</span>
-                    <button class="btn-rest-start" onclick="logRun()"><i class="fa-solid fa-plus"></i></button>
-                </div>
-                <p class="run-total"><span data-t="total_lbl">Total: </span><strong id="run-total-km">0.0</strong> km</p>
+            <div class="header-titles">
+                <h1 data-t="running">Running & Cardio</h1>
+                <span class="header-sub">Supera tus Límites</span>
             </div>
+        </header>
+
+        <div class="page-content" style="padding: 20px;">
+            <div class="didactic-hero" style="background: url('https://images.unsplash.com/photo-1571008887538-b36bb32f4571?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover; padding: 35px 20px; border-radius: 20px; text-align:center; margin-bottom: 25px; border: 1px solid var(--border); position: relative; overflow: hidden;">
+                <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(0deg, #0d0118 0%, rgba(13,1,24,0.3) 100%);"></div>
+                <h2 style="font-size: 1.8rem; margin-bottom: 5px; position:relative; z-index:2; text-shadow: 0 4px 10px rgba(0,0,0,0.8);">🏃‍♂️ Rompe el Asfalto</h2>
+                <p style="font-size: 0.95rem; opacity: 0.9; position:relative; z-index:2; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">Registra tus kilómetros y domina tu resistencia aeróbica.</p>
+            </div>
+
+            <!-- DISTANCE TRACKER -->
+            <div class="detail-card run-tracker glass-premium" style="margin-bottom: 25px; text-align:center;">
+                <h3 data-t="run_log" style="font-size:1.2rem; color:var(--primary); margin-bottom:15px;"><i class="fa-solid fa-stopwatch"></i> Registro de Carrera</h3>
+                <div class="run-input-group" style="display:flex; justify-content:center; align-items:center; gap:10px; margin-bottom:15px;">
+                    <input type="number" id="run-km" placeholder="0.0" step="0.1" style="width:100px; font-size:1.5rem; text-align:center; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:white; border-radius:12px; padding:10px;">
+                    <span style="font-size:1.2rem; font-weight:800; opacity:0.5;">km</span>
+                    <button class="btn-rest-start" onclick="logRun()" style="width:50px; height:50px; border-radius:12px; background:linear-gradient(135deg, #00c9ff, #0066cc); color:white; border:none; font-size:1.2rem; cursor:pointer;"><i class="fa-solid fa-plus"></i></button>
+                </div>
+                <p class="run-total" style="font-size:1rem; opacity:0.8;"><span data-t="total_lbl">Distancia Total Recorrida: </span><strong id="run-total-km" style="font-size:1.5rem; color:#00ffcc;">0.0</strong> <span style="font-size:0.8rem">km</span></p>
+            </div>
+
+            <h3 style="margin-bottom: 15px; font-size:1.1rem; opacity:0.9;">🔥 Beneficios Biomecánicos</h3>
+            <div class="grid-menu action-cols" style="display:grid; grid-template-columns: 1fr 1fr; gap:14px; margin-bottom:25px;">
+                <div class="home-card glass-premium" style="flex-direction:column; padding:15px; text-align:center; cursor:default;">
+                    <div class="hc-icon" style="background:#ff5722; width:45px; height:45px; font-size:1.2rem; margin:0 auto 10px;"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div class="hc-text">
+                        <strong style="font-size:0.95rem; margin-bottom:5px;">Salud CV</strong>
+                        <span style="font-size:0.75rem; opacity:0.7; display:block;">Reduce la presión arterial y aumenta el VO2 Máx.</span>
+                    </div>
+                </div>
+                <div class="home-card glass-premium" style="flex-direction:column; padding:15px; text-align:center; cursor:default;">
+                    <div class="hc-icon" style="background:#4caf50; width:45px; height:45px; font-size:1.2rem; margin:0 auto 10px;"><i class="fa-solid fa-brain"></i></div>
+                    <div class="hc-text">
+                        <strong style="font-size:0.95rem; margin-bottom:5px;">Mentalidad</strong>
+                        <span style="font-size:0.75rem; opacity:0.7; display:block;">Libera endorfinas y elimina la niebla mental aguda.</span>
+                    </div>
+                </div>
+                <div class="home-card glass-premium" style="flex-direction:column; padding:15px; text-align:center; cursor:default;">
+                    <div class="hc-icon" style="background:#e024a3; width:45px; height:45px; font-size:1.2rem; margin:0 auto 10px;"><i class="fa-solid fa-fire-flame-curved"></i></div>
+                    <div class="hc-text">
+                        <strong style="font-size:0.95rem; margin-bottom:5px;">Quema Grasa</strong>
+                        <span style="font-size:0.75rem; opacity:0.7; display:block;">Acelera el metabolismo basal hasta por 24 horas.</span>
+                    </div>
+                </div>
+                <div class="home-card glass-premium" style="flex-direction:column; padding:15px; text-align:center; cursor:default;">
+                    <div class="hc-icon" style="background:#00bcd4; width:45px; height:45px; font-size:1.2rem; margin:0 auto 10px;"><i class="fa-solid fa-bone"></i></div>
+                    <div class="hc-text">
+                        <strong style="font-size:0.95rem; margin-bottom:5px;">Densidad Ósea</strong>
+                        <span style="font-size:0.75rem; opacity:0.7; display:block;">El impacto controlado fortalece las articulaciones.</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- SECTIONS -->
-            <div class="run-tabs">
-                <button class="level-tab active" onclick="showRunSec('stretch')" data-t="run_stretch">Estiramiento</button>
-                <button class="level-tab" onclick="showRunSec('hydra')" data-t="run_hydra">Hidratación</button>
+            <div class="run-tabs" style="margin-bottom:15px; display:flex; gap:10px;">
+                <button class="level-tab active" onclick="showRunSec('stretch')" data-t="run_stretch" style="flex:1">Estiramiento</button>
+                <button class="level-tab" onclick="showRunSec('hydra')" data-t="run_hydra" style="flex:1">Hidratación</button>
             </div>
             <div id="run-stretch" class="run-section active">
-                <div class="habit-list" id="run-stretch-list"></div>
+                <div class="habit-list glass-premium" id="run-stretch-list" style="padding:15px; border-radius:15px;"></div>
             </div>
             <div id="run-hydra" class="run-section hidden">
                 <div class="detail-card glass-premium">
-                    <h3 data-t="water_tips">Tips de Hidratación</h3>
-                    <ul class="water-tips" id="water-tips-list"></ul>
+                    <h3 data-t="water_tips" style="color:#00c9ff;"><i class="fa-solid fa-droplet"></i> Tips de Hidratación</h3>
+                    <ul class="water-tips" id="water-tips-list" style="padding-left:20px; opacity:0.9; margin-top:10px;"></ul>
                 </div>
             </div>
         </div>
@@ -527,29 +630,57 @@
                 <span class="header-sub" data-t="sci_sync">Sincronización Científica</span>
             </div>
         </header>
-        <div class="page-content">
-            <div class="pack-grid">
-                <div class="pack-card glass-premium" onclick="loadPack('full-sci')">
-                    <i class="fa-solid fa-dna"></i>
-                    <strong data-t="proto_full">Protocolo FullBody</strong>
-                    <span data-t="sci_eff">Eje Hormonal Pro</span>
+        <div class="page-content" style="padding: 20px;">
+            <div class="pack-list-v2">
+                <!-- Pack 1 -->
+                <div class="pack-card-didactic" onclick="loadPack('full-sci')">
+                    <div class="pack-image-cover" style="background-image: url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="pack-content-v2">
+                        <div class="pack-badge">🧬 Eje Hormonal</div>
+                        <h3>Protocolo FullBody</h3>
+                        <p>Oxidación máxima y activación del 80% de fibras musculares en una sola sesión.</p>
+                        <div class="pack-meta"><span>🕒 60 Minutos</span> <span>🔥 Alta Intensidad</span></div>
+                        <button class="pack-start-btn">▶ Cargar Master Pack</button>
+                    </div>
                 </div>
-                <div class="pack-card glass-premium" onclick="loadPack('upper-sci')">
-                    <i class="fa-solid fa-shield-heart"></i>
-                    <strong data-t="proto_upper">Torso Hipertrofia</strong>
-                    <span data-t="sci_eff">Basado en Evidencia</span>
+
+                <!-- Pack 2 -->
+                <div class="pack-card-didactic" onclick="loadPack('upper-sci')">
+                    <div class="pack-image-cover" style="background-image: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="pack-content-v2">
+                        <div class="pack-badge">🛡️ Hipertrofia</div>
+                        <h3>Torso Destructor</h3>
+                        <p>Enfoque científico en Pecho, Espalda y Brazos usando rangos de repetición mecánicos.</p>
+                        <div class="pack-meta"><span>🕒 55 Minutos</span> <span>💪 Volumen Medio</span></div>
+                        <button class="pack-start-btn">▶ Cargar Master Pack</button>
+                    </div>
                 </div>
-                <div class="pack-card glass-premium" onclick="loadPack('lower-sci')">
-                    <i class="fa-solid fa-bolt-lightning"></i>
-                    <strong data-t="proto_lower">Tren Inferior Pro</strong>
-                    <span data-t="sci_eff">Mecánica Explosiva</span>
+
+                <!-- Pack 3 -->
+                <div class="pack-card-didactic" onclick="loadPack('lower-sci')">
+                    <div class="pack-image-cover" style="background-image: url('https://images.unsplash.com/photo-1434682881908-b43d0467b798?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="pack-content-v2">
+                        <div class="pack-badge">⚡ Explosividad</div>
+                        <h3>Piernas de Titanio</h3>
+                        <p>Desarrollo de Cuádriceps, Isquios y Glúteos. Estimula la testosterona de forma natural.</p>
+                        <div class="pack-meta"><span>🕒 65 Minutos</span> <span>🏋️ Fuerza Base</span></div>
+                        <button class="pack-start-btn">▶ Cargar Master Pack</button>
+                    </div>
                 </div>
-                <div class="pack-card glass-premium" onclick="loadPack('hybrid-sci')">
-                    <i class="fa-solid fa-fire-glow"></i>
-                    <strong data-t="proto_hybrid">Metabólico 1H</strong>
-                    <span data-t="sci_eff">Máxima Oxidación</span>
+
+                <!-- Pack 4 -->
+                <div class="pack-card-didactic" onclick="loadPack('hybrid-sci')">
+                    <div class="pack-image-cover" style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="pack-content-v2">
+                        <div class="pack-badge">🌪️ Cardio Funcional</div>
+                        <h3>Híbrido Metabólico</h3>
+                        <p>Combinación de Calistenia y Pesos ligeros a alta frecuencia cardíaca. Destruye grasa.</p>
+                        <div class="pack-meta"><span>🕒 45 Minutos</span> <span>🏃 VO2 Máx</span></div>
+                        <button class="pack-start-btn">▶ Cargar Master Pack</button>
+                    </div>
                 </div>
             </div>
+            
             <div id="pack-exercise-list"></div>
         </div>
     </div>

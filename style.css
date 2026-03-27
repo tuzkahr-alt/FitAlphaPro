@@ -382,3 +382,56 @@ body { font-family: 'Outfit', sans-serif; background-color: var(--bg); color: va
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 0px; }
+
+/* === NEW DIDACTIC UI === */
+.pack-list-v2 { display: flex; flex-direction: column; gap: 20px; }
+.pack-card-didactic {
+    background: var(--card-bg); border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--border); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer; position: relative;
+}
+.pack-card-didactic:active { transform: scale(0.96); }
+.pack-image-cover { height: 160px; background-size: cover; background-position: center; position: relative; }
+.pack-image-cover::after {
+    content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%;
+    background: linear-gradient(0deg, rgba(13,1,24,1) 0%, rgba(13,1,24,0) 100%);
+}
+.pack-content-v2 { padding: 15px 20px 20px; position: relative; z-index: 2; margin-top: -30px; }
+.pack-badge {
+    display: inline-block; background: var(--primary); color: white;
+    font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 8px; margin-bottom: 8px;
+    box-shadow: 0 4px 10px rgba(224,36,163,0.4); text-transform: uppercase;
+}
+.pack-content-v2 h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: 6px; }
+.pack-content-v2 p { font-size: 0.85rem; opacity: 0.8; line-height: 1.4; margin-bottom: 12px; }
+.pack-meta { display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 700; opacity: 0.6; margin-bottom: 15px; }
+.pack-start-btn {
+    width: 100%; padding: 12px; background: rgba(255,255,255,0.08); border: 1px solid var(--border);
+    border-radius: 12px; color: white; font-weight: 800; font-size: 0.95rem; cursor: pointer; transition: 0.2s;
+}
+.pack-card-didactic:hover .pack-start-btn { background: var(--primary); border-color: var(--primary); }
+
+.habit-item-v2 {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px;
+    padding: 15px; margin-bottom: 12px; display: flex; align-items: center; gap: 15px;
+    transition: all 0.3s ease; backdrop-filter: blur(10px);
+}
+.habit-item-v2:active { transform: translateY(2px); background: rgba(255,255,255,0.08); }
+.habit-img-wrap {
+    width: 50px; height: 50px; border-radius: 14px; background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.habit-img { width: 30px; height: 30px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5)); }
+.habit-details { flex: 1; display:flex; flex-direction:column; }
+.habit-details strong { font-size: 1rem; font-weight: 800; margin-bottom: 3px; }
+.habit-details span { font-size: 0.75rem; opacity: 0.6; line-height: 1.2; }
+.habit-check {
+    appearance: none; width: 28px; height: 28px; border-radius: 8px;
+    border: 2px solid var(--border); background: transparent; cursor: pointer;
+    position: relative; transition: all 0.2s; flex-shrink: 0;
+}
+.habit-check:checked { background: #00ffcc; border-color: #00ffcc; box-shadow: 0 0 15px rgba(0,255,204,0.4); }
+.habit-check:checked::after {
+    content: '✔'; position: absolute; color: #0d0118; font-weight: 900;
+    font-size: 1rem; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
