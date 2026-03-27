@@ -7,8 +7,8 @@
 const translations = {
     es: {
         welcome_title: "Tu entrenamiento,<br><span>tu disciplina.</span>",
-        calisthenics: "Calistenia", cal_desc: "200 ejercicios organizados",
-        my_gym: "Mi Gimnasio", gym_desc: "200 ejercicios con pesas",
+        calisthenics: "Calistenia", cal_desc: "Dominio corporal absoluto",
+        my_gym: "Mi Gimnasio", gym_desc: "Fuerza e hipertrofia",
         running: "Running", run_desc: "Kilómetros y estiramientos",
         breathing: "Respiración", breath_desc: "Meditación y control mental",
         habits: "Hábitos", hab_desc: "Checklist diaria de éxito",
@@ -29,8 +29,8 @@ const translations = {
     },
     en: {
         welcome_title: "Your training,<br><span>your discipline.</span>",
-        calisthenics: "Calisthenics", cal_desc: "200 organized exercises",
-        my_gym: "My Gym", gym_desc: "200 weight exercises",
+        calisthenics: "Calisthenics", cal_desc: "Absolute body mastery",
+        my_gym: "My Gym", gym_desc: "Strength and hypertrophy",
         running: "Running", run_desc: "KM and stretching",
         breathing: "Breathing", breath_desc: "Meditation and mental control",
         habits: "Habits", hab_desc: "Daily success checklist",
