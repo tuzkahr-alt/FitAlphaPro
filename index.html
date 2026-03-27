@@ -271,13 +271,19 @@
                 </div>
             </div>
             <!-- CONTROLS -->
-            <div class="breath-controls">
+            <div class="breath-controls" style="margin-top:20px; padding-bottom: 30px;">
                 <button class="btn-start premium-btn" id="breath-start-btn" onclick="toggleBreathing()">
                     <i class="fa-solid fa-play"></i> <span>▶ Iniciar Sesión</span>
                 </button>
-                <div class="breath-rounds">
+                <div class="breath-rounds" style="margin-top:15px; background: rgba(255,255,255,0.05); padding:10px 20px; border-radius:15px;">
                     <i class="fa-solid fa-rotate"></i>
-                    <span>Rondas completadas:</span>    <!-- ===================== PANTALLA: HÁBITOS 10X ===================== -->
+                    <span>Rondas completadas:</span> <strong id="breath-rounds">0</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== PANTALLA: HÁBITOS 10X ===================== -->
     <div class="screen hidden" id="screen-habits">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
@@ -309,7 +315,7 @@
                 <!-- Hábito 3 -->
                 <div class="habit-item-v2">
                     <div class="habit-img-wrap"><img src="https://cdn-icons-png.flaticon.com/512/1004/1004300.png" alt="Dumbbell" class="habit-img"></div>
-                    <div class="habit-details"><strong>4. Entrenamiento Intenso</strong><span>Estimula el músculo, rómpelo y progresa.</span></div>
+                    <div class="habit-details"><strong>3. Entrenamiento Intenso</strong><span>Estimula el músculo, rómpelo y progresa.</span></div>
                     <input type="checkbox" class="habit-check">
                 </div>
                 <!-- Hábito 4 -->
@@ -356,11 +362,7 @@
                 </div>
             </div>
             
-            <button class="premium-btn" onclick="showToast('¡Progreso de Hábitos guardado! 🔥')" style="margin-top:20px; width:100%;"><i class="fa-solid fa-save"></i> Guardar Progreso Diario</button>
-        </div>
-    </div><span id="breath-rounds">0</span>
-                </div>
-            </div>
+            <button class="premium-btn btn-pack-start" onclick="saveHabits()" style="margin-top:20px; width:100%;"><i class="fa-solid fa-save"></i> Guardar Progreso Diario</button>
         </div>
     </div>
 
@@ -414,30 +416,40 @@
     <div class="screen hidden" id="screen-calculator">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="calculator">Calculadora</h1>
+            <div class="header-titles">
+                <h1 data-t="calculator">Calculadora Pro</h1>
+                <span class="header-sub">Métricas Corporales</span>
+            </div>
         </header>
-        <div class="page-content">
+
+        <div class="page-content" style="padding: 20px;">
+            <div class="didactic-hero" style="background: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover; padding: 30px 20px; border-radius: 20px; text-align:center; margin-bottom: 25px; border: 1px solid var(--border); position: relative; overflow: hidden;">
+                <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(0deg, #0d0118 0%, rgba(13,1,24,0.3) 100%);"></div>
+                <h2 style="font-size: 1.6rem; margin-bottom: 5px; position:relative; z-index:2; text-shadow: 0 4px 10px rgba(0,0,0,0.8);"><i class="fa-solid fa-scale-unbalanced"></i> Conoce tu Cuerpo</h2>
+                <p style="font-size: 0.9rem; opacity: 0.9; position:relative; z-index:2; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">El IMC (Índice de Masa Corporal) y tu Tasa Metabólica son la base para aplicar un déficit o superávit calórico exacto.</p>
+            </div>
+
             <div class="calc-form glass-premium">
                 <div class="calc-field">
-                    <label data-t="weight_lbl">Peso (kg)</label>
-                    <input type="number" id="calc-weight" placeholder="70" min="30" max="300">
+                    <label data-t="weight_lbl"><i class="fa-solid fa-weight-scale" style="color:#00ffcc"></i> Peso Actual (kg)</label>
+                    <input type="number" id="calc-weight" placeholder="Ej: 75" min="30" max="300">
                 </div>
                 <div class="calc-field">
-                    <label data-t="height_lbl">Altura (cm)</label>
-                    <input type="number" id="calc-height" placeholder="170" min="100" max="250">
+                    <label data-t="height_lbl"><i class="fa-solid fa-ruler-vertical" style="color:#00c9ff"></i> Altura (cm)</label>
+                    <input type="number" id="calc-height" placeholder="Ej: 175" min="100" max="250">
                 </div>
                 <div class="calc-field">
-                    <label data-t="age_lbl">Edad (años)</label>
-                    <input type="number" id="calc-age" placeholder="25" min="10" max="100">
+                    <label data-t="age_lbl"><i class="fa-solid fa-cake-candles" style="color:#e024a3"></i> Edad (años)</label>
+                    <input type="number" id="calc-age" placeholder="Ej: 28" min="10" max="100">
                 </div>
                 <div class="calc-field">
-                    <label data-t="sex_lbl">Sexo</label>
+                    <label data-t="sex_lbl"><i class="fa-solid fa-venus-mars" style="color:#ffb84d"></i> Sexo Biológico</label>
                     <div class="calc-radio">
                         <label><input type="radio" name="calc-sex" value="m" checked> <span data-t="male">Hombre</span></label>
                         <label><input type="radio" name="calc-sex" value="f"> <span data-t="female">Mujer</span></label>
                     </div>
                 </div>
-                <button class="btn-calc premium-btn" onclick="calculateBMI()"><i class="fa-solid fa-calculator"></i> <span data-t="calc_btn">Calcular</span></button>
+                <button class="btn-pack-start" style="padding:15px; background:linear-gradient(135deg, #00c9ff, #0066cc); width:100%; border:none; border-radius:15px; font-size:1.1rem; color:white; font-weight:900;" onclick="calculateBMI()"><i class="fa-solid fa-calculator"></i> <span data-t="calc_btn">Calcular Métricas</span></button>
             </div>
             <!-- RESULTS -->
             <div class="calc-results hidden" id="calc-results">
@@ -596,14 +608,24 @@
     <div class="screen hidden" id="screen-settings">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="settings">Ajustes</h1>
+            <div class="header-titles">
+                <h1 data-t="settings">Ajustes del Sistema</h1>
+                <span class="header-sub">Preferencia & Control</span>
+            </div>
         </header>
-        <div class="page-content">
-            <div class="detail-card glass-premium">
-                <h3 data-t="app_lang">Idioma de la App</h3>
+
+        <div class="page-content" style="padding: 20px;">
+            <div class="didactic-hero" style="background: url('https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80') center/cover; padding: 30px 20px; border-radius: 20px; text-align:center; margin-bottom: 25px; border: 1px solid var(--border); position: relative; overflow: hidden;">
+                <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(0deg, #0d0118 0%, rgba(13,1,24,0.3) 100%);"></div>
+                <h2 style="font-size: 1.6rem; margin-bottom: 5px; position:relative; z-index:2; text-shadow: 0 4px 10px rgba(0,0,0,0.8);"><i class="fa-solid fa-gears"></i> Engine Center</h2>
+                <p style="font-size: 0.9rem; opacity: 0.9; position:relative; z-index:2; text-shadow: 0 2px 5px rgba(0,0,0,0.8);">Configura el idioma nativo de la IA o resetea tus resultados locales.</p>
+            </div>
+
+            <div class="detail-card glass-premium" style="margin-bottom: 20px;">
+                <h3 data-t="app_lang" style="color:#e024a3"><i class="fa-solid fa-language"></i> Idioma Interface</h3>
                 <div class="lang-selector" style="margin-top:10px">
-                    <select id="lang-select-set" onchange="changeLanguage(this.value)" class="premium-select">
-                        <option value="es" selected>🇪🇸 Español</option>
+                    <select id="lang-select-set" onchange="changeLanguage(this.value)" class="premium-select" style="background: rgba(0,0,0,0.2); border: 1px solid var(--primary); color: white; border-radius: 12px; font-weight:800; padding:12px;">
+                        <option value="es" selected>🇪🇸 Español (Nativo)</option>
                         <option value="en">🇺🇸 English</option>
                         <option value="fr">🇫🇷 Français</option>
                         <option value="pt">🇧🇷 Português</option>
@@ -613,10 +635,13 @@
                     </select>
                 </div>
             </div>
+
             <div class="detail-card glass-premium">
-                <h3 data-t="local_data">Datos Locales</h3>
-                <p style="font-size:0.8rem; margin-bottom:12px" data-t="reset_desc">Esto borrará todo tu progreso local.</p>
-                <button class="btn-calc premium-btn" style="background:#ff5252;" onclick="resetAllData()"><i class="fa-solid fa-trash"></i> <span data-t="reset_btn">Resetear Aplicación</span></button>
+                <h3 data-t="local_data" style="color:#ff5252"><i class="fa-solid fa-database"></i> Borrado de Datos Locales</h3>
+                <p style="font-size:0.85rem; margin-bottom:12px; opacity:0.8" data-t="reset_desc">Esto purgará el registro de rutinas, hábitos marcados y métricas físicas ingresadas en este dispositivo.</p>
+                <button class="btn-calc premium-btn" style="background:rgba(255, 82, 82, 0.1); border: 1px solid #ff5252; color:#ff5252; width:100%; margin-top:10px;" onclick="if(confirm('¿Seguro quieres resetear tu progreso?')) resetAllData()">
+                    <i class="fa-solid fa-skull"></i> <span data-t="reset_btn">PURGAR APLICACIÓN</span>
+                </button>
             </div>
         </div>
     </div>
