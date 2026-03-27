@@ -171,57 +171,57 @@ function populateDatabases() {
     // ─── CALISTENIA: Base exercises with UNIQUE ICONS per exercise ───
     const baseCal = {
         "Empuje": [
-            { name: "Flexiones Clásicas",    icon: "🤜", steps: ["Cuerpo recto tabla", "Bajar al pecho", "Empujar explosivo"] },
-            { name: "Fondos en Silla",       icon: "💺", steps: ["Manos en borde", "Codos a 90°", "Subir con tríceps"] },
-            { name: "Dips en Paralelas",     icon: "🏗️", steps: ["Agarre neutro", "Inclinar torso", "Bajar controlado"] },
-            { name: "Archer Pushups",        icon: "🏹", steps: ["Brazo extendido", "Carga lateral", "Alternar lados"] },
-            { name: "Handstand Pushups",     icon: "🙃", steps: ["Pared de apoyo", "Hombros verticales", "ROM completo"] },
-            { name: "Pike Pushups",          icon: "🔺", steps: ["Caderas altas", "Carga deltoides", "Apretar core"] },
-            { name: "Diamond Pushups",       icon: "💎", steps: ["Manos rombo", "Codos adentro", "Tríceps máximo"] },
-            { name: "One Arm Pushup",        icon: "☝️", steps: ["Piernas separadas", "Alinear mano-pecho", "Rotación cero"] },
-            { name: "Explosive Pushup",      icon: "💥", steps: ["Fase concéntrica rápida", "Palmas despegan", "Caer suave"] },
-            { name: "Clapping Pushup",       icon: "👏", steps: ["Empuje máximo", "Palmada al aire", "Absorber impacto"] },
-            { name: "Spiderman Pushup",      icon: "🕷️", steps: ["Rodilla al codo", "Sincronizar", "Alternancia simétrica"] },
-            { name: "Pseudo Planche Push",   icon: "⚖️", steps: ["Dedos atrás", "Inclinación delantera", "Tensión escapular"] },
+            { name: "Flexiones Clásicas",    icon: "🤜", steps: ["Coloca las manos ligeramente más anchas que los hombros.", "Mantén el cuerpo en una línea recta perfecta (tabla), activando glúteos y core.", "Desciende de forma controlada hasta que el pecho roce el suelo, con codos a 45°.", "Empuja de forma explosiva hacia la posición inicial bloqueando codos al final."] },
+            { name: "Fondos en Silla",       icon: "💺", steps: ["Apoya las manos en el borde de una silla estable o banco.", "Extiende las piernas frente a ti y mantén la espalda cerca del apoyo.", "Baja el cuerpo flexionando los codos hasta que formen un ángulo de 90°.", "Presiona con fuerza hacia arriba usando los tríceps para volver al inicio."] },
+            { name: "Dips en Paralelas",     icon: "🏗️", steps: ["Sujétate de las barras paralelas con un agarre neutro y brazos extendidos.", "Inclina ligeramente el torso hacia adelante para enfatizar el trabajo de pectoral.", "Desciende hasta que los hombros queden por debajo de la línea de los codos.", "Extiende los brazos con potencia, manteniendo los hombros lejos de las orejas."] },
+            { name: "Archer Pushups",        icon: "🏹", steps: ["Adopta una posición de flexión con las manos muy abiertas.", "Desciende hacia un lado mientras mantienes el brazo opuesto totalmente recto.", "El brazo extendido debe actuar solo como apoyo, cargando el peso en el brazo flexionado.", "Alterna los lados de forma fluida manteniendo la cadera nivelada."] },
+            { name: "Handstand Pushups",     icon: "🙃", steps: ["Ponte de pino contra una pared con los brazos bloqueados.", "Baja la cabeza de forma controlada hasta que casi toque el suelo.", "Mantén los codos hacia adentro, formando un trípode con las manos y la cabeza.", "Empuja con fuerza hacia arriba extendiendo los hombros totalmente."] },
+            { name: "Pike Pushups",          icon: "🔺", steps: ["Forma una V invertida con el cuerpo, elevando la cadera con pies y manos apoyados.", "Baja la frente hacia el suelo por delante de la línea de tus manos.", "Mantén la tensión en los deltoides y el core activado.", "Empuja hacia atrás y arriba hasta recuperar la posición de V inicial."] },
+            { name: "Diamond Pushups",       icon: "💎", steps: ["Forma un diamante con tus dedos índice y pulgares bajo el pecho.", "Desciende manteniendo los codos pegados a los costados del cuerpo.", "Toca tus manos con el esternón y siente la contracción en los tríceps.", "Extiende los brazos bloqueando codos para máxima activación del tríceps."] },
+            { name: "One Arm Pushup",        icon: "☝️", steps: ["Separa ampliamente los pies para crear una base de apoyo triangular estable.", "Coloca la mano de empuje centrada bajo el esternón y la otra tras la espalda.", "Baja el cuerpo evitando la rotación excesiva de la cadera.", "Empuja con explosividad manteniendo la alineación del hombro y la muñeca."] },
+            { name: "Explosive Pushup",      icon: "💥", steps: ["Realiza una flexión normal bajando de forma muy lenta (3 segundos).", "En el punto más bajo, empuja con tanta fuerza que tus manos despeguen del suelo.", "Aterriza suavemente absorbiendo el impacto con los codos ligeramente flexos.", "Reinicia el movimiento inmediatamente sin perder la tensión abdominal."] },
+            { name: "Clapping Pushup",       icon: "👏", steps: ["Genera un empuje máximo desde la posición inferior de la flexión.", "Mientras estás en el aire, da una palmada rápida frente al pecho.", "Devuelve las manos a su posición original antes de tocar el suelo.", "Amortigua la caída y mantén el cuerpo rígido como una tabla."] },
+            { name: "Spiderman Pushup",      icon: "🕷️", steps: ["Al descender en la flexión, lleva una rodilla hacia el codo del mismo lado.", "Mantén la rodilla en el aire y el cuerpo paralelo al suelo.", "Vuelve a la posición inicial mientras extiendes la pierna atrás.", "Alterna de pierna en cada repetición para trabajar oblicuos y serratos."] },
+            { name: "Pseudo Planche Push",   icon: "⚖️", steps: ["Coloca las manos a la altura de la cintura con los dedos apuntando hacia atrás.", "Inclina todo el cuerpo hacia adelante hasta que tus hombros pasen la línea de las manos.", "Baja manteniendo la inclinación y los codos pegados al cuerpo.", "Siente la tensión extrema en los hombros anteriores y bíceps."] },
         ],
         "Tracción": [
-            { name: "Dominadas Prona",       icon: "🔝", steps: ["Agarre ancho", "Retracción escapular", "ROM completo"] },
-            { name: "Chin-ups Supina",       icon: "💪", steps: ["Agarre estrecho", "Codos a costado", "Bíceps máximo"] },
-            { name: "Neutral Pullup",        icon: "🤝", steps: ["Agarre paralelo", "Cifosis cero", "Bajada lenta"] },
-            { name: "Aussie Pull",           icon: "🌏", steps: ["Barra baja", "Cuerpo inclinado", "Progresión inverted"] },
-            { name: "Muscle Up",             icon: "🏆", steps: ["Pull explosivo", "Transición rápida", "Push final"] },
-            { name: "Front Lever Row",       icon: "🎯", steps: ["Posición de plancha", "Fila horizontal", "Control máximo"] },
-            { name: "Dragon Flag",           icon: "🐉", steps: ["Escápulas fijas", "Cuerpo alineado", "Bajar 4 segundos"] },
-            { name: "Scapular Pull",         icon: "🦴", steps: ["Brazos rectos", "Solo omóplatos", "Aislamiento escapular"] },
+            { name: "Dominadas Prona",       icon: "🔝", steps: ["Cuélgate de la barra con un agarre ligeramente superior al ancho de hombros.", "Inicia el movimiento con una retracción escapular (juntando omóplatos).", "Sube el pecho hacia la barra superándola con la barbilla sin balanceos.", "Baja de forma controlada extendiendo los brazos completamente."] },
+            { name: "Chin-ups Supina",       icon: "💪", steps: ["Agarra la barra con las palmas mirando hacia ti (supinación).", "Tira con fuerza enfocándote en llevar los codos hacia tus costados.", "Supera la barra con la barbilla y aprieta los bíceps en el punto máximo.", "Desciende lentamente resistiendo la gravedad para maximizar la hipertrofia."] },
+            { name: "Neutral Pullup",        icon: "🤝", steps: ["Usa un agarre paralelo de modo que tus palmas se miren entre sí.", "Mantén el pecho alto y la columna vertebral en posición neutra.", "Tira hacia arriba evitando que los hombros se encojan hacia las orejas.", "Controla la fase negativa estirando los dorsales al máximo al bajar."] },
+            { name: "Aussie Pull",           icon: "🌏", steps: ["Usa una barra baja a nivel de la cintura y colócate bajo ella.", "Mantén los talones apoyados y el cuerpo recto como una vara.", "Tira del pecho hacia la barra apretando la espalda media.", "Baja con control sintiendo el estiramiento entre los omóplatos."] },
+            { name: "Muscle Up",             icon: "🏆", steps: ["Realiza una dominada explosiva con agarre falso o ligeramente adelantado.", "Cuando el pecho alcance la barra, realiza una transición rápida de los codos hacia arriba.", "Finaliza con un empuje de fondo (dip) hasta bloquear los brazos arriba.", "Baja controlando la transición para evitar lesiones en el hombro."] },
+            { name: "Front Lever Row",       icon: "🎯", steps: ["Adopta la posición de Front Lever (o su progresión: tuck, advanced).", "Manteniendo el cuerpo paralelo al suelo, tira de la barra hacia la cintura.", "Crucial mantener la cadera alta y el core en máxima tensión isométrica.", "Extiende los brazos sin dejar que el cuerpo caiga hacia abajo."] },
+            { name: "Dragon Flag",           icon: "🐉", steps: ["Túmbate en un banco y sujétate fuertemente por detrás de la cabeza.", "Eleva todo el cuerpo hasta que solo apoyes las escápulas.", "Baja el cuerpo en bloque (piernas y torso alineados) lo más lento posible.", "Sube de nuevo antes de tocar el banco usando puramente la fuerza del core."] },
+            { name: "Scapular Pull",         icon: "🦴", steps: ["Cualquier ejercicio de tracción colgado, mantén los brazos totalmente rectos.", "Realiza el movimiento únicamente separando y juntando tus omóplatos.", "Siente cómo la espalda superior se activa sin involucrar los brazos.", "Sostén la contracción 2 segundos para mejorar la salud del hombro."] },
         ],
         "Piernas": [
-            { name: "Sentadilla Clásica",    icon: "🦵", steps: ["Pies al ancho hombros", "Rodilla sobre pie", "Paralelo o más"] },
-            { name: "Zancada Frontal",       icon: "🚶", steps: ["Paso largo", "Rodilla sin tocar suelo", "Empujar al centro"] },
-            { name: "Pistol Squat",          icon: "🔫", steps: ["Una pierna extendida", "Cadera profunda", "Control total"] },
-            { name: "Box Jump",              icon: "📦", steps: ["Salto explosivo", "Caer amortiguado", "Cadera extendida"] },
-            { name: "Sissy Squat",           icon: "🏛️", steps: ["Talones elevados", "Rodillas al frente", "Cuádriceps máximo"] },
-            { name: "Bulgarian Split",       icon: "🇧🇬", steps: ["Pie trasero elevado", "Descender vertical", "Cadera nivelada"] },
-            { name: "Shrimp Squat",          icon: "🦐", steps: ["Pie trasero mano", "Una pierna", "ROM profundo"] },
-            { name: "Nordic Curl",           icon: "🌨️", steps: ["Tobillos fijos", "Bajar excéntrico", "Isquiotibiales máximo"] },
+            { name: "Sentadilla Clásica",    icon: "🦵", steps: ["Pies al ancho de hombros, puntas ligeramente hacia afuera.", "Baja la cadera como si fueras a sentarte, manteniendo la espalda recta.", "Empuja con los talones y mantén las rodillas alineadas con los pies.", "Sube exhalando y aprieta glúteos al finalizar la extensión."] },
+            { name: "Zancada Frontal",       icon: "🚶", steps: ["Da un paso largo hacia adelante manteniendo el torso erguido.", "Baja la rodilla trasera hasta que casi toque el suelo (90° en ambas piernas).", "Empuja con la pierna delantera para volver a la posición inicial.", "Mantén el core firme para evitar desequilibrios laterales."] },
+            { name: "Pistol Squat",          icon: "🔫", steps: ["Extiende una pierna al aire frente a ti y mantén los brazos adelante.", "Baja con la pierna de apoyo de forma controlada y profunda.", "Mantén el talón pegado al suelo y la rodilla estable.", "Vuelve a subir con potencia manteniendo la pierna libre en el aire."] },
+            { name: "Box Jump",              icon: "📦", steps: ["Frente a un cajón o plataforma estable, inicia un balanceo de brazos.", "Realiza un salto explosivo aterrizando con ambos pies suavemente sobre el cajón.", "Asegúrate de caer con las rodillas semiflexionadas para amortiguar.", "Extiende cadera arriba y baja dando un paso, no saltando atrás."] },
+            { name: "Sissy Squat",           icon: "🏛️", steps: ["Sujétate de algo si es necesario y elévate sobre las puntas de los pies.", "Inclina el torso hacia atrás mientras llevas las rodillas hacia adelante.", "Baja hasta sentir un estiramiento intenso en los cuádriceps.", "Vuelve a la vertical empujando con la punta de los pies."] },
+            { name: "Bulgarian Split",       icon: "🇧🇬", steps: ["Coloca un pie atrás sobre un banco o elevación.", "Baja el cuerpo verticalmente con la pierna delantera.", "Mantén la rodilla delantera sobre el tobillo, sin que sobrepase la punta.", "Siente el trabajo en el glúteo y cuádriceps de la pierna de apoyo."] },
+            { name: "Shrimp Squat",          icon: "🦐", steps: ["Flexiona una pierna atrás sujetando el pie con la mano opuesta.", "Baja hasta que la rodilla de la pierna libre toque suavemente el suelo.", "Inclina el torso ligeramente adelante para mantener el equilibrio.", "Empuja con la pierna de apoyo para recuperar la posición erguida."] },
+            { name: "Nordic Curl",           icon: "🌨️", steps: ["Ponte de rodillas con los tobillos bloqueados por un compañero o soporte.", "Baja el torso hacia adelante de la forma más lenta posible utilizando isquiotibiales.", "Cuando no puedas resistir más, apóyate con las manos en el suelo.", "Usa un ligero impulso de manos para volver arriba mientras los isquios tiran."] },
         ],
         "Core": [
-            { name: "Plancha Isométrica",    icon: "🧱", steps: ["Cuerpo plano", "Glúteos apretados", "Respirar continuo"] },
-            { name: "Ab Wheel Rollout",      icon: "☸️", steps: ["Rodillas al inicio", "Extender lento", "Contraer al volver"] },
-            { name: "Hanging Leg Raise",     icon: "🎢", steps: ["Colgado sin balanceo", "Piernas rectas", "Controlar bajada"] },
-            { name: "L-Sit Hold",            icon: "💺", steps: ["Brazos rígidos", "Piernas horizontales", "Cadera neutra"] },
-            { name: "Russian Twist",         icon: "🌀", steps: ["Torso 45°", "Rotación máxima", "Pies elevados"] },
-            { name: "Windshield Wiper",      icon: "🌬️", steps: ["Piernas a 90°", "Descender lateral", "Core absorbe"] },
-            { name: "Hollow Body Hold",      icon: "🍌", steps: ["Zona lumbar al suelo", "Extremidades extendidas", "Respirar"] },
-            { name: "Flutter Kicks",         icon: "🦋", steps: ["Cadera baja", "Patada alternada", "Zona lumbar plana"] },
+            { name: "Plancha Isométrica",    icon: "🧱", steps: ["Apoya antebrazos y puntas de pies, alineando hombros con codos.", "Contrae glúteos, abdomen y cuádriceps para evitar que la cadera caiga.", "Empuja con los codos hacia el suelo para separar las escápulas.", "Mantén la mirada al suelo y respira de forma rítmica y profunda."] },
+            { name: "Ab Wheel Rollout",      icon: "☸️", steps: ["De rodillas, sujeta el rodillo y extiende los brazos frente a ti.", "Rueda hacia adelante manteniendo la espalda ligeramente redondeada (core activo).", "Llega hasta donde puedas sin que la zona lumbar se arquee.", "Tira del rodillo hacia tus rodillas usando únicamente los abdominales."] },
+            { name: "Hanging Leg Raise",     icon: "🎢", steps: ["Cualquier barra, cuélgate con brazos estirados y core en tensión.", "Eleva las piernas totalmente rectas hasta que tus pies toquen la barra.", "Evita el uso de la inercia o el balanceo excesivo del cuerpo.", "Baja las piernas de forma extremadamente lenta sintiendo la tensión abdominal."] },
+            { name: "L-Sit Hold",            icon: "💺", steps: ["Apoya las manos en el suelo o paralelas con los brazos bloqueados.", "Eleva las piernas hasta que queden paralelas al suelo (forma de L).", "Mantén los hombros deprimidos y el pecho abierto.", "Sostén la posición comprimiendo el abdomen al máximo."] },
+            { name: "Russian Twist",         icon: "🌀", steps: ["Siéntate con las rodillas flexionadas y eleva los pies del suelo.", "Inclina el torso atrás 45°, sintiendo la activación del abdomen.", "Rota el torso de lado a lado tocando el suelo con las manos.", "Mantén las piernas lo más quietas posible durante la rotación."] },
+            { name: "Windshield Wiper",      icon: "🌬️", steps: ["Fíjate en una barra o túmbate boca arriba con los brazos abiertos.", "Eleva las piernas a 90° y bájalas hacia un lado sin tocar el suelo.", "Vuelve al centro y baja hacia el otro lado de forma controlada.", "Usa los oblicuos para frenar la caída y potenciar el retorno."] },
+            { name: "Hollow Body Hold",      icon: "🍌", steps: ["Tumbado boca arriba, pega la zona lumbar firmemente contra el suelo.", "Eleva ligeramente las piernas y los hombros (forma de plátano).", "Extiende los brazos por detrás de la cabeza para mayor dificultad.", "Mantén la tensión muscular total y respira suavemente."] },
+            { name: "Flutter Kicks",         icon: "🦋", steps: ["Boca arriba con manos bajo glúteos para proteger la lumbar.", "Eleva los pies unos 15 cm del suelo y realiza patadas alternas cortas.", "Mantén las piernas totalmente rectas y la punta de los pies hacia afuera.", "No permitas que los talones toquen el suelo en ningún momento."] },
         ],
         "Cardio": [
-            { name: "Burpees",               icon: "⚡", steps: ["Plancha-jalón-salto", "Full body", "Ritmo constante"] },
-            { name: "Mountain Climbers",     icon: "⛰️", steps: ["Plancha alta", "Rodillas al pecho", "Velocidad"] },
-            { name: "Jumping Jacks",         icon: "🌟", steps: ["Sincronizar piernas-brazos", "Ritmo aeróbico", "Continuo"] },
-            { name: "High Knees",            icon: "🏃", steps: ["Rodillas al ombligo", "Brazos activos", "Postura recta"] },
-            { name: "Butt Kicks",            icon: "🦶", steps: ["Talón al glúteo", "Cadencia alta", "Inclinación leve"] },
-            { name: "Sprint en Escalera",    icon: "🪜", steps: ["Pies ágiles", "Cabeza alta", "Potencia máxima"] },
-            { name: "Shadow Boxing",         icon: "🥊", steps: ["Jab-Cross-Hook", "Pies activos", "Intensidad alta"] },
+            { name: "Burpees",               icon: "⚡", steps: ["Desde posición erguida, baja a cuclillas y salta a posición de plancha.", "Realiza una flexión tocando el pecho en el suelo.", "Recoge los pies hacia adentro y salta explosivamente con brazos arriba.", "Aterriza suavemente e inicia la siguiente repetición sin pausas."] },
+            { name: "Mountain Climbers",     icon: "⛰️", steps: ["Posición de plancha alta con las manos bajo los hombros.", "Lleva una rodilla hacia el pecho de forma explosiva alternando piernas.", "Mantén la cadera baja y el cuerpo alineado en todo momento.", "Aumenta la velocidad para maximizar el gasto calórico."] },
+            { name: "Jumping Jacks",         icon: "🌟", steps: ["Inicia de pie con brazos a los costados y pies juntos.", "Salta separando las piernas mientras llevas los brazos sobre la cabeza.", "Vuelve con un salto a la posición original de forma rítmica.", "Mantén un rebote suave sobre las puntas de los pies."] },
+            { name: "High Knees",            icon: "🏃", steps: ["Corre en el sitio elevando las rodillas hacia el ombligo.", "Mantén el torso recto y mueve los brazos en coordinación.", "El impacto debe ser mínimo, aterrizando siempre con el mediotarso.", "Busca una cadencia alta para activar el sistema cardiovascular."] },
+            { name: "Butt Kicks",            icon: "🦶", steps: ["Trota suavemente elevando los talones hacia los glúteos.", "Inclina el torso ligeramente hacia adelante.", "Siente el estiramiento dinámico en los cuádriceps y la activación de isquios.", "Mantén un ritmo constante y fluido durante todo el tiempo."] },
+            { name: "Sprint en Escalera",    icon: "🪜", steps: ["Usa un escalón o escalera de agilidad, mueve los pies rápido adentro-fuera.", "Usa los brazos para ganar potencia y equilibrio.", "Mantén la mirada al frente, no a los pies, para mejorar la propiocepción.", "Entra y sale de cada espacio con precisión técnica."] },
+            { name: "Shadow Boxing",         icon: "🥊", steps: ["Frente a un espejo, lanza combinaciones de golpes al aire (Jab-Cross).", "Mantén las rodillas flexionadas y los pies en movimiento constante.", "Expulsa el aire en cada golpe para mayor potencia.", "Visualiza a un oponente para mantener la guardia alta y activa."] },
         ]
     };
 
@@ -247,31 +247,31 @@ function populateDatabases() {
     // ─── GIMNASIO: Base exercises with UNIQUE ICONS per exercise ───
     const baseGym = {
         "Fuerza": [
-            { name: "Press de Banca",        icon: "🏋️", muscle: "Pecho / Tríceps / Hombros", steps: ["Retracción escapular", "Barra sobre pecho", "Empuje vertical"] },
-            { name: "Peso Muerto",           icon: "⚓", muscle: "Isquios / Lumbar / Glúteos", steps: ["Barra sobre mediotarso", "Espalda neutra", "Empujar suelo"] },
-            { name: "Sentadilla en Barra",   icon: "🦁", muscle: "Cuádriceps / Glúteos / Core", steps: ["Barra en trapecios", "Paralelo profundo", "Rodillas neutras"] },
-            { name: "Press Militar",         icon: "🎖️", muscle: "Deltoides / Tríceps", steps: ["Barra a clavículas", "Empuje recto", "Lockout completo"] },
-            { name: "Remo con Barra",        icon: "🚣", muscle: "Espalda Media / Bíceps", steps: ["Torso inclinado 45°", "Codo 70°", "Retraer escápulas"] },
-            { name: "Press Arnold",          icon: "🌅", muscle: "Deltoides 3 cabezas", steps: ["Palmas adentro inicio", "Rotar al subir", "Lockout arriba"] },
-            { name: "Jalón al Pecho",        icon: "🎣", muscle: "Dorsal Ancho / Bíceps", steps: ["Agarre supraancho", "Codo al suelo", "Pecho hacia barra"] },
+            { name: "Press de Banca",        icon: "🏋️", muscle: "Pecho / Tríceps / Hombros", steps: ["Retrae las escápulas y apóyalas firmemente en el banco.", "Agarra la barra a un ancho superior a hombros y sácala del soporte.", "Baja la barra lentamente hacia la zona media del pecho, codos a 45°.", "Empuja la barra verticalmente exhalando en el esfuerzo máximo."] },
+            { name: "Peso Muerto",           icon: "⚓", muscle: "Isquios / Lumbar / Glúteos", steps: ["Pies al ancho de cadera, barra sobre la mitad de los pies.", "Agarra la barra y baja la cadera hasta que las espinillas toquen la barra.", "Mantén la espalda neutra y tira de la barra pegada a las piernas.", "Extiende cadera y rodillas a la vez hasta estar totalmente erguido."] },
+            { name: "Sentadilla en Barra",   icon: "🦁", muscle: "Cuádriceps / Glúteos / Core", steps: ["Coloca la barra sobre los trapecios y saca pecho.", "Baja la cadera rompiendo el paralelo (90° o más) con espalda neutra.", "No permitas que las rodillas colapsen hacia adentro.", "Sube con potencia empujando desde el talón."] },
+            { name: "Press Militar",         icon: "🎖️", muscle: "Deltoides / Tríceps", steps: ["Barra apoyada en la parte superior del pecho con agarre firme.", "Empuja la barra hacia el techo pasando cerca de la cara.", "Bloquea los codos arriba con la cabeza ligeramente adelantada.", "Baja con control hasta la posición de inicio en las clavículas."] },
+            { name: "Remo con Barra",        icon: "🚣", muscle: "Espalda Media / Bíceps", steps: ["Torso inclinado 45° con las rodillas ligeramente flexionadas.", "Tira de la barra hacia la zona del ombligo apretando la espalda.", "Mantén los codos pegados al cuerpo y las escápulas retraídas.", "Baja la barra lentamente estirando los dorsales por completo."] },
+            { name: "Press Arnold",          icon: "🌅", muscle: "Deltoides 3 cabezas", steps: ["Mancuernas frente al pecho con las palmas mirando hacia ti.", "Abre los brazos lateralmente mientras rotas las palmas hacia afuera.", "Empuja hacia arriba hasta extender los brazos totalmente.", "Invierte el movimiento rotando de nuevo las palmas hacia adentro."] },
+            { name: "Jalón al Pecho",        icon: "🎣", muscle: "Dorsal Ancho / Bíceps", steps: ["Sujeta la barra con un agarre ancho y siéntate con rodillas fijas.", "Tira de la barra hacia el pecho inclinando ligeramente el torso.", "Encuentra el pico de contracción abajo apretando los dorsales.", "Sube lentamente permitiendo que la barra estire bien tu espalda."] },
         ],
         "Hipertrofia": [
-            { name: "Curl de Bíceps",        icon: "💪", muscle: "Bíceps Braquial", steps: ["Codos fijos", "Supinación completa", "Fase excéntrica 3s"] },
-            { name: "Extensión Tríceps",     icon: "🔱", muscle: "Tríceps Cabeza Larga", steps: ["Codos verticales", "Extensión máxima", "Sin balanceo"] },
-            { name: "Prensa de Piernas",     icon: "🦿", muscle: "Cuádriceps / Glúteos", steps: ["Pies ancho hombros", "Rodillas 90°", "Rodillas neutras"] },
-            { name: "Aperturas de Pecho",    icon: "🦅", muscle: "Pectoral Mayor", steps: ["Codos suavemente flexos", "Arco pectoral", "Control total"] },
-            { name: "Pull Over",             icon: "🛸", muscle: "Dorsal / Pectoral", steps: ["Mancuerna sobre pecho", "Arco profundo", "Core activado"] },
-            { name: "Remo en Polea",         icon: "🔗", muscle: "Espalda Media", steps: ["Sentado erguido", "Codo 90°", "Retraer y apretar"] },
-            { name: "Vuelos Frontales",      icon: "✈️", muscle: "Deltoides Anterior", steps: ["Brazos semi-flexos", "Altura de hombros", "Controlado"] },
+            { name: "Curl de Bíceps",        icon: "💪", muscle: "Bíceps Braquial", steps: ["De pie, codos pegados a los costados y mirada al frente.", "Eleva el peso flexionando el codo sin mover el hombro.", "Aprieta el bíceps al máximo arriba (isometría 1 segundo).", "Baja muy lento (3 segundos) para romper más fibras musculares."] },
+            { name: "Extensión Tríceps",     icon: "🔱", muscle: "Tríceps Cabeza Larga", steps: ["Sujeta la mancuerna o polea sobre la cabeza con brazos extendidos.", "Desciende el peso por detrás de la nuca flexionando los codos.", "Mantén los codos cerrados, cerca de las orejas.", "Extiende totalmente los brazos sintiendo la quemazón en el tríceps."] },
+            { name: "Prensa de Piernas",     icon: "🦿", muscle: "Cuádriceps / Glúteos", steps: ["Pies al ancho de hombros en el centro de la plataforma.", "Baja la carga hasta que tus rodillas formen un ángulo de 90°.", "No despegues la zona lumbar del respaldo del asiento.", "Empuja hacia afuera sin bloquear las rodillas al final."] },
+            { name: "Aperturas de Pecho",    icon: "🦅", muscle: "Pectoral Mayor", steps: ["Tumbado en banco, mancuernas sobre el pecho con codos semiflexos.", "Abre los brazos lateralmente en forma de arco hasta sentir estiramiento.", "No bajes más allá de la línea de los hombros.", "Cierra de nuevo los brazos apretando el pectoral al centro."] },
+            { name: "Pull Over",             icon: "🛸", muscle: "Dorsal / Pectoral", steps: ["Apoya solo la espalda superior en el banco de forma transversal.", "Baja la mancuerna por detrás de la cabeza con brazos casi estirados.", "Inhala profundo para expandir la caja torácica.", "Tira de vuelta hasta la altura de los ojos usando el dorsal."] },
+            { name: "Remo en Polea",         icon: "🔗", muscle: "Espalda Media", steps: ["Sentado con espalda recta y pies en soportes.", "Tira del agarre hacia el abdomen retrayendo escápulas.", "Mantén los codos pegados al torso y pecho arriba.", "Extiende los brazos lentamente sin encorvar la espalda."] },
+            { name: "Vuelos Frontales",      icon: "✈️", muscle: "Deltoides Anterior", steps: ["Eleva el peso frente a ti con los brazos casi rectos.", "Llega hasta la altura de los ojos sin balancear el cuerpo.", "Mantén la tensión constante en el deltoides anterior.", "Baja controlando el peso resistiendo la caída."] },
         ],
         "Musculación": [
-            { name: "Vuelos Laterales",      icon: "🦜", muscle: "Deltoides Lateral", steps: ["Leve inclinación", "Codo ligeramente flexo", "No más de 90°"] },
-            { name: "Curl Martillo",         icon: "🔨", muscle: "Braquial / Antebrazo", steps: ["Agarre neutro", "Sin supinación", "Controlar bajada"] },
-            { name: "Encogimientos",         icon: "🤷", muscle: "Trapecio Superior", steps: ["Elevar hombros", "Sostener 2s", "Bajar controlado"] },
-            { name: "Calf Raises",           icon: "👟", muscle: "Gemelos / Sóleo", steps: ["Talón bajo borde", "Elevation completa", "Sostener arriba"] },
-            { name: "Face Pulls",            icon: "😤", muscle: "Deltoides Posterior / Rotadores", steps: ["Polea alta", "Jalar a la cara", "Codos arriba"] },
-            { name: "Pec Deck",              icon: "🦚", muscle: "Pectoral Interno", steps: ["Buen arco pectoral", "No sobreextendir", "Contraer al cerrar"] },
-            { name: "Patada Tríceps",        icon: "🦵", muscle: "Tríceps Cabeza Lateral", steps: ["Torso paralelo suelo", "Codo fijo", "Extensión completa"] },
+            { name: "Vuelos Laterales",      icon: "🦜", muscle: "Deltoides Lateral", steps: ["Ligeramente inclinado adelante, eleva mancuernas hacia los lados.", "Codos ligeramente más altos que las muñecas.", "Llega a la horizontal y siente el aislamiento del hombro medio.", "Baja muy despacio manteniendo la tensión muscular."] },
+            { name: "Curl Martillo",         icon: "🔨", muscle: "Braquial / Antebrazo", steps: ["Agarre neutro (palmas hacia adentro) y core firme.", "Eleva el peso sin rotar la muñeca.", "Excelente para dar grosor al brazo y fortalecer antebrazo.", "Controla la fase negativa estirando bien el músculo."] },
+            { name: "Encogimientos",         icon: "🤷", muscle: "Trapecio Superior", steps: ["Sujeta peso a los costados y eleva los hombros hacia las orejas.", "No rotes los hombros, el movimiento es solo vertical.", "Sostén la contracción 2 segundos en el punto más alto.", "Baja estirando los trapecios por completo."] },
+            { name: "Calf Raises",           icon: "👟", muscle: "Gemelos / Sóleo", steps: ["Punta de pies en un borde elevado, talones al aire.", "Baja el talón todo lo posible para estirar el gemelo.", "Sube de puntillas al máximo y sostén 1 segundo arriba.", "Realiza el movimiento de forma lenta y pausada."] },
+            { name: "Face Pulls",            icon: "😤", muscle: "Deltoides Posterior / Rotadores", steps: ["Tira de la cuerda hacia tu frente o nariz con codos altos.", "Separa las puntas de la cuerda al final del recorrido.", "Enfoque en la salud del hombro y deltoides posterior.", "Sostén la contracción final para mejorar la postura."] },
+            { name: "Pec Deck",              icon: "🦚", muscle: "Pectoral Interno", steps: ["Siéntate con espalda apoyada y brazos en soportes.", "Cierra los brazos al centro apretando el área interna del pecho.", "Evita estirar demasiado los hombros al volver atrás.", "Músculo bajo tensión constante en todo el rango."] },
+            { name: "Patada Tríceps",        icon: "🦵", muscle: "Tríceps Cabeza Lateral", steps: ["Torso paralelo al suelo y codo pegado al costado.", "Extiende el brazo hacia atrás bloqueando el codo.", "No dejes que el hombro se mueva, solo el antebrazo.", "Siente la contracción máxima en la cabeza lateral del tríceps."] },
         ]
     };
 
@@ -433,7 +433,21 @@ function showDetail(name, type, level = null) {
     document.getElementById('detail-cat').textContent = e.cat;
     document.getElementById('detail-muscle').textContent = e.muscle;
     document.getElementById('detail-desc').textContent = e.desc;
-    document.getElementById('detail-steps').innerHTML = e.steps.map(s => `<li>${s}</li>`).join('');
+    document.getElementById('detail-steps').innerHTML = e.steps.map((s,i) => `<li><span class="step-num">${i+1}</span>${s}</li>`).join('');
+    
+    // Coach tip based on category
+    const tips = {
+        "Empuje":    "Retrae las escápulas antes de empujar. Codos a 45° del torso. Exhala en el esfuerzo.",
+        "Tracción":  "Inicia con la escápula, no con el bíceps. Hombros bajos y atrás durante todo el rango.",
+        "Piernas":   "Rodillas alineadas con el pie. Peso en el talón. Cadera primero al bajar, no las rodillas.",
+        "Core":      "Zona lumbar pegada al suelo. Respira mientras sostienes. Nunca aguantes más de lo necesario.",
+        "Cardio":    "Mantén ritmo cardíaco entre 130-160 ppm. Hidratación cada 15 min. Postura erecta siempre.",
+        "Fuerza":    "Prioriza ROM completo sobre el peso. 3-5 min de descanso entre series de fuerza máxima.",
+        "Hipertrofia": "TUT (Tiempo bajo tensión): 2s subir, 1s aguantar, 3s bajar. Así maximizas el daño muscular.",
+        "Musculación": "Contracción isométrica en el punto máximo. 1-2 min de descanso. Foco total en el músculo objetivo."
+    };
+    const tipEl = document.getElementById('coach-tip');
+    if(tipEl) tipEl.textContent = tips[e.cat] || "Ejecuta cada repetición con control. Calidad sobre cantidad.";
     
     const sMap = { principiante: "3", intermedio: "4", avanzado: "4", elite: "5" };
     const setsVal = e.sets || sMap[e.level] || "4";
@@ -441,7 +455,9 @@ function showDetail(name, type, level = null) {
     document.getElementById('detail-sets').textContent = `${setsVal} series × ${e.reps} reps${method}`;
     document.getElementById('current-reps').textContent = e.reps;
     
-    restInitialTime = (e.level === 'elite' ? 180 : 90);
+    restInitialTime = (e.level === 'elite' ? 180 : e.level === 'avanzado' ? 120 : 90);
+    const recEl = document.getElementById('rest-rec');
+    if(recEl) recEl.textContent = restInitialTime + 's';
     resetRestTimer();
     goScreen('screen-exercise-detail');
 }
@@ -653,15 +669,48 @@ function renderDashboard() {
 function updateProgressStats(){ /* Stats Logic */ }
 function resetAllData(){ localStorage.clear(); location.reload(); }
 
-let restT, restInitialTime = 60, currentRestTime = 60;
-function resetRestTimer() { clearInterval(restT); document.getElementById('rest-time-display').textContent = '0:00'; }
+let restT, restInitialTime = 90, currentRestTime = 90;
+const REST_CIRCUMFERENCE = 2 * Math.PI * 40; // r=40
+
+function resetRestTimer() {
+    clearInterval(restT);
+    const display = document.getElementById('rest-time-display');
+    const circle  = document.getElementById('rest-progress-circle');
+    const btn     = document.getElementById('rest-start-btn');
+    const status  = document.getElementById('rest-status');
+    if(display) display.textContent = '0:00';
+    if(circle)  { circle.style.strokeDasharray = REST_CIRCUMFERENCE; circle.style.strokeDashoffset = REST_CIRCUMFERENCE; }
+    if(btn)     { btn.innerHTML = '<i class="fa-solid fa-play"></i> Iniciar Descanso'; btn.disabled = false; }
+    if(status)  status.textContent = '⬆ Presiona "Completar Serie" para iniciar automáticamente';
+}
+
 function startRestTimer() {
+    clearInterval(restT);
     let s = restInitialTime;
+    const circle = document.getElementById('rest-progress-circle');
+    const btn    = document.getElementById('rest-start-btn');
+    const status = document.getElementById('rest-status');
+    if(btn) btn.innerHTML = '<i class="fa-solid fa-pause"></i> Descansando...';
+    if(status) status.textContent = '💪 ¡Descansa y prepárate para la siguiente serie!';
+    if(circle) { circle.style.strokeDasharray = REST_CIRCUMFERENCE; circle.style.strokeDashoffset = '0'; }
     restT = setInterval(() => {
         s--;
-        const m = Math.floor(s/60), sec = s%60;
-        document.getElementById('rest-time-display').textContent = `${m}:${sec<10?'0':''}${sec}`;
-        if(s <= 0) { clearInterval(restT); playSnd('snd-end'); }
+        const m = Math.floor(s/60), sec = s % 60;
+        const display = document.getElementById('rest-time-display');
+        if(display) display.textContent = `${m}:${sec < 10 ? '0' : ''}${sec}`;
+        // Update SVG ring progress
+        if(circle) {
+            const offset = REST_CIRCUMFERENCE - (s / restInitialTime) * REST_CIRCUMFERENCE;
+            circle.style.strokeDashoffset = offset;
+        }
+        if(s <= 0) {
+            clearInterval(restT);
+            playSnd('snd-end');
+            const st = document.getElementById('rest-status');
+            if(st) st.textContent = '🔥 ¡Listo! Empieza la siguiente serie ahora.';
+            const b = document.getElementById('rest-start-btn');
+            if(b) b.innerHTML = '<i class="fa-solid fa-play"></i> Nueva Serie';
+        }
     }, 1000);
 }
 

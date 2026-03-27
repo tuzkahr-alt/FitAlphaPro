@@ -119,65 +119,101 @@
     <div class="screen hidden" id="screen-exercise-detail">
         <header class="glass-header">
             <button class="back-btn" id="detail-back-btn" onclick="goBack()"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 id="detail-name" data-t="exercise">Ejercicio</h1>
+            <div class="header-titles">
+                <h1 id="detail-name-title" style="font-size:1.1rem; font-weight:900">-</h1>
+                <span id="detail-muscle" style="font-size:0.75rem; opacity:0.6"></span>
+            </div>
         </header>
-        <div class="page-content">
-            <div class="exercise-hero" id="detail-hero" style="font-size:5rem; margin-bottom:20px; text-align:center">💪</div>
-            <div class="header-titles" style="margin-left:0; margin-bottom:15px; text-align:center">
-                <h2 id="detail-name-title" style="font-size:1.8rem; font-weight:900">-</h2>
-                <div class="detail-meta" style="justify-content:center; margin-top:10px">
+        <div class="page-content" style="padding:16px 20px;">
+
+            <!-- HERO VISUAL (emoji + nivel + categoria) -->
+            <div class="ex-detail-hero">
+                <div class="hero-icon-wrap" id="detail-hero">💪</div>
+                <div class="hero-pills">
                     <span class="meta-pill" id="detail-level">-</span>
                     <span class="meta-pill" id="detail-cat">-</span>
-                    <span class="meta-pill" id="detail-muscle">-</span>
                 </div>
             </div>
-            
-            <!-- DIDACTIC REPS COUNTER -->
+
+            <!-- COACH GUIDANCE BOX -->
+            <div class="coach-box">
+                <div class="coach-avatar">🧑‍💼</div>
+                <div class="coach-advice">
+                    <strong>Consejo del Entrenador</strong>
+                    <p id="coach-tip">Carga la ficha del ejercicio para ver el consejo personalizado.</p>
+                </div>
+            </div>
+
+            <!-- SERIES COUNTER + COMPLETE -->
             <div class="detail-card reps-master">
-                <h3 data-t="target_sets">Objetivo de la Serie</h3>
+                <h3>🎯 Objetivo de la Serie</h3>
                 <div class="reps-control">
-                    <button onclick="changeReps(-1)"><i class="fa-solid fa-minus"></i></button>
-                    <div class="reps-display"><span id="current-reps">12</span> <small data-t="reps_lbl">REPS</small></div>
-                    <button onclick="changeReps(1)"><i class="fa-solid fa-plus"></i></button>
+                    <button class="reps-btn reps-minus" onclick="changeReps(-1)"><i class="fa-solid fa-minus"></i></button>
+                    <div class="reps-display">
+                        <span id="current-reps">12</span>
+                        <small>REPS</small>
+                    </div>
+                    <button class="reps-btn reps-plus" onclick="changeReps(1)"><i class="fa-solid fa-plus"></i></button>
                 </div>
-                <button class="btn-calc premium-btn" style="width:100%; margin-top:15px" onclick="logSet()"><i class="fa-solid fa-check"></i> <span data-t="complete_set">Completar Serie</span></button>
+                <button class="btn-complete-set" onclick="logSet()">
+                    <i class="fa-solid fa-check-double"></i>
+                    ✅ Serie Completada — Iniciar Descanso
+                </button>
             </div>
-            <span class="meta-pill" id="detail-time" style="background:rgba(0,153,255,0.1); border-color:var(--blue); color:var(--blue)"><i class="fa-solid fa-clock"></i> 5 min</span>
-            <!-- REST TIMER -->
+
+            <!-- REST TIMER CARD -->
             <div class="rest-timer-card">
                 <div class="rest-timer-header">
-                    <i class="fa-solid fa-stopwatch"></i>
-                    <span data-t="rest_timer">Cronómetro de descanso</span>
+                    <i class="fa-solid fa-stopwatch" style="color:var(--blue)"></i>
+                    <span>⏱ Cronómetro de Descanso</span>
                     <span class="rest-rec" id="rest-rec"></span>
                 </div>
-                <div class="rest-display">
-                    <div class="rest-ring-wrap">
-                        <svg class="rest-svg" viewBox="0 0 100 100">
-                            <circle class="rest-bg" cx="50" cy="50" r="44"/>
-                            <circle class="rest-progress" id="rest-progress-circle" cx="50" cy="50" r="44"/>
-                        </svg>
-                        <div class="rest-time-display" id="rest-time-display">0:00</div>
-                    </div>
+                <div class="rest-guide-tip">
+                    💡 Descansa el tiempo indicado entre series para una recuperación óptima.
+                </div>
+                <div class="rest-ring-wrap">
+                    <svg class="rest-svg" viewBox="0 0 100 100">
+                        <defs>
+                            <linearGradient id="restGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="var(--blue)" />
+                                <stop offset="100%" stop-color="#00ffcc" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="rest-bg" cx="50" cy="50" r="40"/>
+                        <circle class="rest-progress" id="rest-progress-circle" cx="50" cy="50" r="40"/>
+                    </svg>
+                    <div class="rest-time-display" id="rest-time-display">0:00</div>
                 </div>
                 <div class="rest-btns">
-                    <button class="btn-rest-start" id="rest-start-btn" onclick="startRestTimer()"><i class="fa-solid fa-play"></i> <span data-t="start_rest">Iniciar Descanso</span></button>
-                    <button class="btn-rest-reset" onclick="resetRestTimer()"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button class="btn-rest-start" id="rest-start-btn" onclick="startRestTimer()">
+                        <i class="fa-solid fa-play"></i> Iniciar Descanso
+                    </button>
+                    <button class="btn-rest-reset" onclick="resetRestTimer()" title="Reiniciar">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
                 </div>
-                <p class="rest-status" id="rest-status" data-t="rest_status">Presiona iniciar al terminar una serie</p>
+                <p class="rest-status" id="rest-status">⬆ Presiona "Completar Serie" para iniciar el cronómetro automáticamente</p>
             </div>
+
             <!-- DESCRIPTION -->
             <div class="detail-card">
-                <h3 data-t="desc">Descripción</h3>
-                <p id="detail-desc"></p>
+                <h3>📋 Descripción Técnica</h3>
+                <p id="detail-desc" style="line-height:1.6; font-size:0.9rem; opacity:0.85;"></p>
             </div>
+
+            <!-- STEP-BY-STEP INSTRUCTIONS -->
             <div class="detail-card">
-                <h3 data-t="instructions">Instrucciones</h3>
-                <ol id="detail-steps"></ol>
+                <h3>📐 Instrucciones Paso a Paso</h3>
+                <ol id="detail-steps" class="steps-list"></ol>
             </div>
+
+            <!-- SERIES RECOMMENDATION -->
             <div class="detail-card sets-card">
-                <h3 data-t="sets_sugg">Series sugeridas</h3>
-                <p id="detail-sets"></p>
+                <h3>📊 Series y Repeticiones Sugeridas</h3>
+                <p id="detail-sets" style="font-size:1.05rem; font-weight:700; color:var(--primary);"></p>
+                <p style="font-size:0.8rem; opacity:0.6; margin-top:6px;">⚠ Ajusta según tu nivel de fatiga. Descanso entre series: 60–180 segundos.</p>
             </div>
+
         </div>
     </div>
 
