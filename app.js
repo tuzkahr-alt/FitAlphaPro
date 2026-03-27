@@ -623,19 +623,19 @@ function logRun() {
 const masterPacks = {
     'full-sci': {
         title: "Protocolo FullBody (Eje Hormonal)", desc: "Oxidación máxima. Impacto en todo el cuerpo para liberar testosterona y hormona de crecimiento.",
-        exercises: ['Dominadas Estrictas','Flexiones Clásicas','Sentadillas Clásicas','Soportes Estáticos']
+        exercises: ['Dominadas Prona','Flexiones Clásicas','Sentadilla Clásica','Plancha Isométrica']
     },
     'upper-sci': {
         title: "Torso Destructor (Hipertrofia)", desc: "Enfoque en pecho, hombros y espalda usando resistencia progresiva y tiempo bajo tensión.",
-        exercises: ['Dominadas Estrictas','Flexiones Clásicas','Fondos en Paralelas','Remo Invertido']
+        exercises: ['Dominadas Prona','Flexiones Clásicas','Dips en Paralelas','Aussie Pull']
     },
     'lower-sci': {
         title: "Piernas de Titanio (Explosividad)", desc: "Quema de grasa agresiva en el tren inferior. Estimula el metabolismo basal de forma natural.",
-        exercises: ['Sentadillas Clásicas','Soportes Estáticos','Dominadas Estrictas'] // Re-using what we have in DB
+        exercises: ['Sentadilla Clásica','Zancada Frontal','Plancha Isométrica']
     },
     'hybrid-sci': {
         title: "Híbrido Metabólico (Cardio)", desc: "Combinación de calistenia y descansos cortos para generar un entorno V02 Máx extremo.",
-        exercises: ['Flexiones Clásicas','Sentadillas Clásicas'] // Add Burpees if existed, but working with what is safely there
+        exercises: ['Flexiones Clásicas','Sentadilla Clásica', 'Burpees']
     }
 };
 
@@ -652,8 +652,8 @@ function loadPack(packId) {
     container.innerHTML = '';
     
     pack.exercises.forEach(exName => {
-        // Fetch from baseCal first (we know these exist in baseCal)
-        const d = baseCal.find(e => e.name === exName); 
+        // Buscamos dentro del array global 'exercises'
+        const d = exercises.find(e => e.name === exName); 
         if(d) {
             container.innerHTML += `
             <div class="exercise-item" onclick="showDetail('${d.name}', 'cal')">

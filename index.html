@@ -81,7 +81,7 @@
                         <div class="hc-icon" style="background:#00c9ff; width:40px; height:40px; font-size:1.1rem; margin-right:10px;"><i class="fa-solid fa-share-nodes"></i></div>
                         <div class="hc-text" style="text-align:left;"><strong>Compartir</strong></div>
                     </button>
-                    <button class="home-card glass-premium" onclick="window.open('https://paypal.com/donate','_blank')" style="flex-direction:row; padding:15px; text-align:center;">
+                    <button class="home-card glass-premium" onclick="window.open('https://wa.me/56965345341?text=Quiero%20donar','_blank')" style="flex-direction:row; padding:15px; text-align:center;">
                         <div class="hc-icon" style="background:#ffb84d; width:40px; height:40px; font-size:1.1rem; margin-right:10px;"><i class="fa-solid fa-hand-holding-dollar"></i></div>
                         <div class="hc-text" style="text-align:left;"><strong>Donar</strong></div>
                     </button>
@@ -91,8 +91,14 @@
                     <strong style="font-size:1.1rem;">Instalar Aplicación (Android/iOS)</strong>
                 </button>
             </div>
-            <div class="home-footer" style="text-align:center; padding:20px 0; opacity:0.6; font-size:0.8rem;">
-                <span data-t="national_product">Producto Nacional, Chile — 2026</span>
+            <div class="home-footer" style="text-align:center; padding:20px 0; font-size:0.85rem;">
+                <div style="font-size:1.5rem; display:flex; gap:20px; justify-content:center; margin-bottom:15px; opacity:0.8;">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-tiktok"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+                <span data-t="national_product" style="opacity:0.6;">Producto Nacional, Chile — 2026</span>
             </div>
         </div>
     </div>
@@ -239,14 +245,16 @@
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
             <h1 data-t="breathing">🫁 Respiración</h1>
         </header>
+
         <!-- Mode Tabs -->
-        <div class="level-tabs">
+        <div class="level-tabs" style="padding: 15px 20px; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px;">
             <button class="level-tab active" onclick="showBreathingMode('box')" data-t="box_breath">🟦 Cuadrada</button>
             <button class="level-tab" onclick="showBreathingMode('478')" data-t="breath_478">🌙 4-7-8</button>
             <button class="level-tab" onclick="showBreathingMode('fire')" data-t="fire_breath">🔥 Fuego</button>
             <button class="level-tab" onclick="showBreathingMode('calm')" data-t="calm_breath">🌊 Calma</button>
         </div>
-        <div class="page-content breathing-content">
+
+        <div class="page-content breathing-content" style="padding: 0 20px;">
             <!-- INFO PANEL -->
             <div class="breath-info-card">
                 <h3 id="breath-title">🟦 Respiración Cuadrada</h3>
