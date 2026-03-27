@@ -1,74 +1,69 @@
-# 🦾 FitAlpha Pro — Manual del Guerrero 2026
+# 🦾 FitAlpha Pro — Manual del Guerrero 2026 (Global Update)
 
-Bienvenido a la plataforma definitiva de **Calistenia, Musculación y Mindfulness**. Este manual te guiará para dominar cada rincón de la app.
-
----
-
-## 📱 1. Cómo usar en Android (PWA)
-Para tener la experiencia completa de "App" en tu teléfono:
-1. Abre tu navegador (Chrome recomendado).
-2. Dirígete a la URL de tu app (o escanea el QR si lo tienes).
-3. Presiona los **3 puntos (menú)** del navegador.
-4. Selecciona **"Instalar aplicación"** o **"Añadir a pantalla de inicio"**.
-5. ¡Listo! Ahora la verás en tu menú de apps con su icono oficial.
+Bienvenido a la versión ultra de **FitAlpha Pro**. Ahora con soporte para **7 idiomas** y una base de datos expandida de **400+ ejercicios**.
 
 ---
 
-## 🤖 2. Aurora IA (Tu Coach Digital)
-En la esquina inferior derecha verás una burbuja flotante. Es **Aurora**, tu asistente inteligente:
-- **Motivación**: Pídele una frase para encender tu fuego interior.
-- **Rachas**: Pregúntale cómo va tu progreso y ella analizará tus datos.
-- **Tips**: Obtén consejos técnicos sobre ejercicios específicos.
+## 🌍 1. Soporte Multi-idioma (7 Idiomas)
+La app ahora es 100% bilingüe y adaptativa en:
+- 🇪🇸 **Español**
+- 🇺🇸 **English**
+- 🇫🇷 **Français**
+- 🇧🇷 **Português**
+- 🇩🇪 **Deutsch**
+- 🇮🇹 **Italiano**
+- 🇯🇵 **日本語**
+*Cambia el idioma en el menú de Ajustes (Engranaje).*
 
 ---
 
-## 🏋️ 3. Secciones de Entrenamiento
-### 100 Ejercicios de Calistenia
-Organizados por niveles (Principiante a Élite) y categorías (Empuje, Tracción, Piernas, Core, Cardio). Cada uno con visuales didácticos de **2 fotogramas (Inicio/Final)** para que no falles en la técnica.
+## 🤸 2. Catálogo de 200 Ejercicios de Calistenia
+Organizados por niveles (Principiante, Intermedio, Avanzado, Élite).
 
-### Mi Gimnasio (Weights)
-Si prefieres los fierros, tenemos **100 ejercicios con pesas** enfocados en:
-- **Fuerza**: Cargas pesadas.
-- **Hipertrofia**: Crecimiento muscular.
-- **Musculación**: Definición y volumen.
-
-### Packs de Entrenamiento
-¿Poco tiempo? Ve a **Entrena por Packs**:
-- **Leg Day**: Destruye tus piernas.
-- **Torso Superior**: Enfoque en push/pull.
-- **Core**: Blindaje abdominal.
-- **Full Body**: Lo mejor de todo en una sesión.
+### Categorías Principales:
+1.  **Empuje (Push)**: Flexiones Clásicas, Diamante, Archer, Pike, Handstand Pushups, Fondos en paralelas, Fondos en anillas, etc. (Variaciones: Explosivas, Isométricas, con Lastre).
+2.  **Tracción (Pull)**: Dominadas Pronas, Supinas, Neutras, Aussie Pulls, Muscle Ups, Front Lever, Back Lever, One Arm Pullups.
+3.  **Piernas (Legs)**: Sentadillas, Zancadas, Pistol Squats, Sissy Squats, Box Jumps, Shrimp Squats.
+4.  **Core (Abdomen)**: Planchas, L-Sit, V-Sit, Dragon Flags, Leg Raises, Hollow Body, Russian Twists.
+5.  **Cardio/Híbrido**: Burpees, Sprints, Mountain Climbers, Shadow Boxing, Jumping Jacks.
 
 ---
 
-## 🏃 4. Módulo Running
-Registra tus kilómetros y mejora tu resistencia:
-- **KM Log**: Suma tus carreras para ver tu histórico total.
-- **Estiramientos**: 5 ejercicios vitales *antes* de empezar.
-- **Hidratación**: Guía para no deshidratarte bajo el sol.
+## 🏋️ 3. Catálogo de 200 Ejercicios de Gimnasio
+Enfoque en pesas libres y máquinas.
+
+### Categorías Principales:
+1.  **Fuerza (Compound)**: Press de Banca, Peso Muerto, Sentadilla con Barra, Press Militar, Remo con Barra, Shoulder Press.
+2.  **Hipertrofia (Isolation)**: Curl de Bíceps (Barra/Mancuerna), Extensión de Tríceps, Prensa de Piernas, Aperturas de Pecho, Pull Over.
+3.  **Musculación (Targeted)**: Vuelos Laterales, Martillo, Encogimientos, Zancada con Pesas, Face Pulls, Calf Raises.
+*Cada ejercicio tiene 7 variaciones (Barra, Mancuerna, Polea, Máquina, Smith, Inclinado, Declinado).*
 
 ---
 
-## 🌬️ 5. Respiración & Mindfulness
-4 modos didácticos con beneficios específicos y tips técnicos:
-- **Cuadrada**: Estrés y foco.
-- **4-7-8**: Ansiedad y sueño.
+## 🧬 4. Master Packs 1h (Ciencia del Deporte)
+Protocolos estructurados para optimizar tu tiempo:
+1. **Calentamiento Articular**.
+2. **Bloque de Potencia/Fuerza**.
+3. **Bloque Principal de Hipertrofia**.
+4. **Finisher/Core y Estiramientos**.
+
+---
+
+## 🧘 5. Motor de Respiración Visual
+Ahora más dinámico con **Notificación de Pulso**:
+- **Cuadrada**: 4-4-4-4 (Foco).
+- **4-7-8**: Sedante (Sueño/Ansiedad).
 - **Fuego**: Energía inmediata.
 - **Calma**: Activación nervio vago.
+*El botón de inicio ahora pulsa visualmente en rojo cuando está activo.*
 
 ---
 
-## 📈 6. Rachas y Hábitos
-El éxito no es un acto, es un hábito.
-- **Checklist diaria**: Nutrición, entrenamiento y mente.
-- **Racha (Streak)**: Mira cuántos días seguidos llevas siendo fiel a tu disciplina.
+## 📊 6. Calculadora de IMC Dinámica
+Nueva interfaz gráfica:
+- **Barra de Rango (Gauge)**: Mira visualmente dónde caes en la escala (Bajo, Normal, Sobrepeso, Obeso).
+- **Marcador Móvil**: Se desplaza dinámicamente según tus resultados.
+- **Métricas Extra**: Peso ideal y Calorías base (TMB).
 
 ---
-
-## ⚙️ 7. Ajustes
-Presiona el **engranaje** en el inicio para:
-- Cambiar el idioma (Español, Inglés, Francés, Portugués).
-- Resetear tus datos si quieres empezar de cero.
-
----
-*FitAlpha Pro — Producto Nacional, Chile 2026.*
+*FitAlpha Pro — Producto Nacional, Chile 2026. Versión Ultra v7.*

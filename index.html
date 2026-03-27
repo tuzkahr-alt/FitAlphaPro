@@ -18,63 +18,65 @@
     <div class="screen active" id="screen-home">
         <header class="glass-header">
             <div class="logo">FIT<span>ALPHA</span> <em>PRO</em></div>
-            <div style="margin-left:auto; display:flex; gap:12px; align-items:center">
-                 <button class="back-btn" onclick="goScreen('screen-settings')" style="background:rgba(224,36,163,0.1); border-color:var(--primary); color:var(--primary); width:32px; height:32px"><i class="fa-solid fa-gear"></i></button>
-                 <button class="back-btn" onclick="showApkInfo()" style="background:rgba(0,153,255,0.1); border-color:var(--blue); color:var(--blue); width:32px; height:32px"><i class="fa-solid fa-cloud-arrow-down"></i></button>
-                 <button class="back-btn" onclick="toggleWidget(false)" style="background:rgba(255,184,77,0.1); border-color:var(--accent); color:var(--accent); width:32px; height:32px; display:none" id="restore-widget-btn"><i class="fa-solid fa-robot"></i></button>
+            <div class="header-btns">
+                 <button class="icon-btn" onclick="goScreen('screen-settings')" title="Settings"><i class="fa-solid fa-gear"></i></button>
+                 <button class="icon-btn" onclick="showApkInfo()" title="Install"><i class="fa-solid fa-cloud-arrow-down"></i></button>
             </div>
         </header>
         <div class="home-content">
             <div class="home-welcome">
-                <h2 data-t="welcome_title">Tu entrenamiento,<br><span>tu disciplina.</span></h2>
+                <h2 data-t="welcome_title">Tu entrenamiento,<span>tu disciplina.</span></h2>
             </div>
             <!-- WEEKLY PROGRESS DASHBOARD -->
-            <div class="calendar-card" style="margin-top:20px">
-                <div class="cal-title"><span data-t="weekly_progress">PROGRESO SEMANAL</span> <span id="streak-count-home">1 🔥</span></div>
-                <div class="calendar-row" id="usage-calendar">
-                    <!-- JS: L M M J V S D -->
+            <div class="calendar-card">
+                <div class="cal-title">
+                    <span data-t="weekly_progress">PROGRESO SEMANAL</span>
+                    <span id="streak-count-home">1 🔥</span>
                 </div>
+                <div class="calendar-row" id="usage-calendar"></div>
             </div>
 
-            <div class="home-menu">
-                <button class="home-card" onclick="goScreen('screen-workouts')">
+            <div class="home-menu grid-menu">
+                <!-- Principales -->
+                <button class="home-card glass-premium full-card" onclick="goScreen('screen-workouts')">
                     <div class="hc-icon" style="background:linear-gradient(135deg,#e024a3,#4208a0)"><i class="fa-solid fa-dumbbell"></i></div>
-                    <div class="hc-text"><strong data-t="calisthenics">Calistenia</strong><span data-t="cal_desc">100 ejercicios organizados</span></div>
+                    <div class="hc-text"><strong data-t="calisthenics">Calistenia</strong><span data-t="cal_desc">200 ejercicios organizados</span></div>
                     <i class="fa-solid fa-chevron-right hc-arrow"></i>
                 </button>
-                <button class="home-card" onclick="goScreen('screen-gym')">
+                <button class="home-card glass-premium full-card" onclick="goScreen('screen-gym')">
                     <div class="hc-icon" style="background:linear-gradient(135deg,#673ab7,#3f51b5)"><i class="fa-solid fa-weight-hanging"></i></div>
-                    <div class="hc-text"><strong data-t="my_gym">Mi Gimnasio</strong><span data-t="gym_desc">100 ejercicios con pesas</span></div>
+                    <div class="hc-text"><strong data-t="my_gym">Mi Gimnasio</strong><span data-t="gym_desc">200 ejercicios con pesas</span></div>
                     <i class="fa-solid fa-chevron-right hc-arrow"></i>
                 </button>
-                <button class="home-card" onclick="goScreen('screen-running')">
-                    <div class="hc-icon" style="background:linear-gradient(135deg,#ff5722,#ff9800)"><i class="fa-solid fa-person-running"></i></div>
-                    <div class="hc-text"><strong data-t="running">Running</strong><span data-t="run_desc">Kilómetros y estiramientos</span></div>
-                    <i class="fa-solid fa-chevron-right hc-arrow"></i>
-                </button>
-                <button class="home-card" onclick="goScreen('screen-breathing')">
-                    <div class="hc-icon" style="background:linear-gradient(135deg,#00c9ff,#0066cc)"><i class="fa-solid fa-wind"></i></div>
-                    <div class="hc-text"><strong data-t="breathing">Respiración</strong><span data-t="breath_desc">Meditación y control mental</span></div>
-                    <i class="fa-solid fa-chevron-right hc-arrow"></i>
-                </button>
-                <button class="home-card" onclick="goScreen('screen-habits')">
-                    <div class="hc-icon" style="background:linear-gradient(135deg,#ff6b35,#f9a825)"><i class="fa-solid fa-check-double"></i></div>
-                    <div class="hc-text"><strong data-t="habits">Hábitos</strong><span data-t="hab_desc">Checklist diaria de éxito</span></div>
-                    <i class="fa-solid fa-chevron-right hc-arrow"></i>
-                </button>
-                <button class="home-card" onclick="goScreen('screen-calculator')">
-                    <div class="hc-icon" style="background:linear-gradient(135deg,#ffb84d,#e65100)"><i class="fa-solid fa-scale-balanced"></i></div>
-                    <div class="hc-text"><strong data-t="calculator">Calculadora</strong><span data-t="calc_desc">IMC y métricas</span></div>
-                    <i class="fa-solid fa-chevron-right hc-arrow"></i>
-                </button>
-                <button class="home-card" style="border-color:var(--primary); background:rgba(224,36,163,0.05)" onclick="goScreen('screen-packs')">
+                
+                <!-- Secundarios en Grid -->
+                <div class="sub-grid">
+                    <button class="home-card glass-premium" onclick="goScreen('screen-running')">
+                        <div class="hc-icon" style="background:linear-gradient(135deg,#ff5722,#ff9800)"><i class="fa-solid fa-person-running"></i></div>
+                        <div class="hc-text"><strong data-t="running">Running</strong><span data-t="run_desc">KM y más</span></div>
+                    </button>
+                    <button class="home-card glass-premium" onclick="goScreen('screen-breathing')">
+                        <div class="hc-icon" style="background:linear-gradient(135deg,#00c9ff,#0066cc)"><i class="fa-solid fa-wind"></i></div>
+                        <div class="hc-text"><strong data-t="breathing">Respiro</strong><span data-t="breath_desc">Control mental</span></div>
+                    </button>
+                    <button class="home-card glass-premium" onclick="goScreen('screen-habits')">
+                        <div class="hc-icon" style="background:linear-gradient(135deg,#ff6b35,#f9a825)"><i class="fa-solid fa-check-double"></i></div>
+                        <div class="hc-text"><strong data-t="habits">Hábitos</strong><span data-t="hab_desc">Checklist</span></div>
+                    </button>
+                    <button class="home-card glass-premium" onclick="goScreen('screen-calculator')">
+                        <div class="hc-icon" style="background:linear-gradient(135deg,#ffb84d,#e65100)"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div class="hc-text"><strong data-t="calculator">Calculadora</strong><span data-t="calc_desc">IMC Meta</span></div>
+                    </button>
+                </div>
+                
+                <button class="home-card special-card full-card" onclick="goScreen('screen-packs')">
                     <div class="hc-icon" style="background:var(--primary)"><i class="fa-solid fa-layer-group"></i></div>
-                    <div class="hc-text"><strong data-t="packs">Entrena por Packs</strong><span data-t="packs_desc">Rutinas express por zona</span></div>
+                    <div class="hc-text"><strong data-t="packs">Master Packs 1h</strong><span data-t="packs_desc">Protocolos científicos</span></div>
                     <i class="fa-solid fa-chevron-right hc-arrow"></i>
                 </button>
             </div>
             <div class="home-footer">
-                <span>Producto Nacional, Chile — 2026</span>
+                <span data-t="national_product">Producto Nacional, Chile — 2026</span>
             </div>
         </div>
     </div>
@@ -88,16 +90,25 @@
                 <span id="cal-count-sub" class="header-sub">0 ejercicios disponibles</span>
             </div>
         </header>
-        <!-- Level Tabs -->
-        <div class="level-tabs">
-            <button class="level-tab active" data-level="principiante" onclick="filterLevel(this)" data-t="lvl_beg">Principiante</button>
-            <button class="level-tab" data-level="intermedio" onclick="filterLevel(this)" data-t="lvl_int">Intermedio</button>
-            <button class="level-tab" data-level="avanzado" onclick="filterLevel(this)" data-t="lvl_adv">Avanzado</button>
-            <button class="level-tab" data-level="elite" onclick="filterLevel(this)" data-t="lvl_elite">Élite</button>
-        </div>
-        <!-- Category Filter -->
-        <div class="cat-filter" id="cat-filter">
-            <!-- Generated by JS -->
+        <!-- Extended Filters -->
+        <div class="filter-panel" style="background: rgba(0,0,0,0.1); border-bottom: 1px solid var(--border); margin-bottom: 15px; padding-top: 15px;">
+            <div class="filter-label" style="font-size: 0.75rem; color: var(--primary); padding: 0 20px 5px; font-weight: 800; text-transform: uppercase;">Dificultad</div>
+            <div class="level-tabs" id="cal-level-tabs" style="padding-bottom: 10px;">
+                <button class="level-tab active" data-level="principiante" onclick="filterLevel(this)" data-t="lvl_beg">Principiante</button>
+                <button class="level-tab" data-level="intermedio" onclick="filterLevel(this)" data-t="lvl_int">Intermedio</button>
+                <button class="level-tab" data-level="avanzado" onclick="filterLevel(this)" data-t="lvl_adv">Avanzado</button>
+                <button class="level-tab" data-level="elite" onclick="filterLevel(this)" data-t="lvl_elite">Élite</button>
+            </div>
+            
+            <div class="filter-label" style="font-size: 0.75rem; color: var(--blue); padding: 5px 20px 5px; font-weight: 800; text-transform: uppercase;">Músculo / Tipo</div>
+            <div class="level-tabs" id="cal-cat-tabs" style="padding-bottom: 15px;">
+                <button class="level-tab active" data-cat="todas" onclick="filterCalCat(this)" data-t="cat_all">Todas</button>
+                <button class="level-tab" data-cat="Empuje" onclick="filterCalCat(this)" data-t="cat_push">Empuje</button>
+                <button class="level-tab" data-cat="Tracción" onclick="filterCalCat(this)" data-t="cat_pull">Tracción</button>
+                <button class="level-tab" data-cat="Piernas" onclick="filterCalCat(this)" data-t="cat_legs">Piernas</button>
+                <button class="level-tab" data-cat="Core" onclick="filterCalCat(this)" data-t="cat_core">Core</button>
+                <button class="level-tab" data-cat="Cardio" onclick="filterCalCat(this)" data-t="cat_cardio">Cardio</button>
+            </div>
         </div>
         <div class="exercise-list" id="exercise-list">
             <!-- Generated by JS -->
@@ -113,11 +124,11 @@
         <div class="page-content">
             <div class="exercise-hero" id="detail-hero" style="font-size:5rem; margin-bottom:20px; text-align:center">💪</div>
             <div class="header-titles" style="margin-left:0; margin-bottom:15px; text-align:center">
-                <h2 id="detail-name-title" style="font-size:1.8rem; font-weight:900">Flexiones</h2>
+                <h2 id="detail-name-title" style="font-size:1.8rem; font-weight:900">-</h2>
                 <div class="detail-meta" style="justify-content:center; margin-top:10px">
-                    <span class="meta-pill" id="detail-level">ELITE</span>
-                    <span class="meta-pill" id="detail-cat">EMPUJE</span>
-                    <span class="meta-pill" id="detail-muscle">PECHO</span>
+                    <span class="meta-pill" id="detail-level">-</span>
+                    <span class="meta-pill" id="detail-cat">-</span>
+                    <span class="meta-pill" id="detail-muscle">-</span>
                 </div>
             </div>
             
@@ -126,10 +137,10 @@
                 <h3 data-t="target_sets">Objetivo de la Serie</h3>
                 <div class="reps-control">
                     <button onclick="changeReps(-1)"><i class="fa-solid fa-minus"></i></button>
-                    <div class="reps-display"><span id="current-reps">12</span> <small>REPS</small></div>
+                    <div class="reps-display"><span id="current-reps">12</span> <small data-t="reps_lbl">REPS</small></div>
                     <button onclick="changeReps(1)"><i class="fa-solid fa-plus"></i></button>
                 </div>
-                <button class="btn-calc" style="width:100%; margin-top:15px" onclick="logSet()"><i class="fa-solid fa-check"></i> <span data-t="complete_set">Completar Serie</span></button>
+                <button class="btn-calc premium-btn" style="width:100%; margin-top:15px" onclick="logSet()"><i class="fa-solid fa-check"></i> <span data-t="complete_set">Completar Serie</span></button>
             </div>
             <span class="meta-pill" id="detail-time" style="background:rgba(0,153,255,0.1); border-color:var(--blue); color:var(--blue)"><i class="fa-solid fa-clock"></i> 5 min</span>
             <!-- REST TIMER -->
@@ -152,7 +163,7 @@
                     <button class="btn-rest-start" id="rest-start-btn" onclick="startRestTimer()"><i class="fa-solid fa-play"></i> <span data-t="start_rest">Iniciar Descanso</span></button>
                     <button class="btn-rest-reset" onclick="resetRestTimer()"><i class="fa-solid fa-rotate-left"></i></button>
                 </div>
-                <p class="rest-status" id="rest-status">Presiona iniciar al terminar una serie</p>
+                <p class="rest-status" id="rest-status" data-t="rest_status">Presiona iniciar al terminar una serie</p>
             </div>
             <!-- DESCRIPTION -->
             <div class="detail-card">
@@ -164,7 +175,7 @@
                 <ol id="detail-steps"></ol>
             </div>
             <div class="detail-card sets-card">
-                <h3 data-t="sets">Series sugeridas</h3>
+                <h3 data-t="sets_sugg">Series sugeridas</h3>
                 <p id="detail-sets"></p>
             </div>
         </div>
@@ -174,38 +185,51 @@
     <div class="screen hidden" id="screen-breathing">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="breathing">Respiración</h1>
+            <h1 data-t="breathing">🫁 Respiración</h1>
         </header>
-        <!-- Sub-tabs -->
+        <!-- Mode Tabs -->
         <div class="level-tabs">
-            <button class="level-tab active" onclick="showBreathingMode('box')">Cuadrada</button>
-            <button class="level-tab" onclick="showBreathingMode('478')">4-7-8</button>
-            <button class="level-tab" onclick="showBreathingMode('fire')">Fuego</button>
-            <button class="level-tab" onclick="showBreathingMode('calm')">Calma</button>
+            <button class="level-tab active" onclick="showBreathingMode('box')" data-t="box_breath">🟦 Cuadrada</button>
+            <button class="level-tab" onclick="showBreathingMode('478')" data-t="breath_478">🌙 4-7-8</button>
+            <button class="level-tab" onclick="showBreathingMode('fire')" data-t="fire_breath">🔥 Fuego</button>
+            <button class="level-tab" onclick="showBreathingMode('calm')" data-t="calm_breath">🌊 Calma</button>
         </div>
         <div class="page-content breathing-content">
-            <div class="breathing-description" id="breath-desc">
-                <h3 id="breath-title">Respiración Cuadrada</h3>
-                <p id="breath-info">Inhala 4s → Retén 4s → Exhala 4s → Retén 4s. Ideal para foco y control del estrés.</p>
+            <!-- INFO PANEL -->
+            <div class="breath-info-card">
+                <h3 id="breath-title">🟦 Respiración Cuadrada</h3>
+                <p id="breath-info" style="font-size:0.88rem; opacity:0.8; margin: 8px 0; line-height:1.5;">Técnica de las Fuerzas Especiales de EE.UU. Ciclos de 4 segundos iguales para un control total del sistema nervioso.</p>
+                <div class="breath-rhythm-badge">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span id="breath-rhythm">4s Inhala → 4s Retén → 4s Exhala → 4s Retén</span>
+                </div>
                 <div class="didactic-box">
-                    <strong>Beneficios:</strong>
-                    <ul id="breath-benefits"></ul>
+                    <strong>✨ Beneficios:</strong>
+                    <ul id="breath-benefits">
+                        <li>⚡ Reduce el estrés y la ansiedad al instante</li>
+                        <li>🎯 Mejora el enfoque y la concentración</li>
+                        <li>💤 Facilita el sueño profundo</li>
+                        <li>🫁 Regula el sistema nervioso autónomo</li>
+                    </ul>
                 </div>
             </div>
-            <div class="breath-ring-wrap">
+            <!-- VISUAL RING -->
+            <div class="visual-breath-experience">
                 <div class="breath-ring" id="breath-ring">
                     <div class="breath-inner">
-                        <span id="breath-phase">Listo</span>
+                        <span id="breath-phase">🫁</span>
                         <span id="breath-count"></span>
                     </div>
                 </div>
             </div>
+            <!-- CONTROLS -->
             <div class="breath-controls">
-                <button class="btn-start" id="breath-start-btn" onclick="toggleBreathing()">
-                    <i class="fa-solid fa-play"></i> Iniciar
+                <button class="btn-start premium-btn" id="breath-start-btn" onclick="toggleBreathing()">
+                    <i class="fa-solid fa-play"></i> <span>▶ Iniciar Sesión</span>
                 </button>
                 <div class="breath-rounds">
-                    <span>Rondas: <strong id="breath-rounds">0</strong></span>
+                    <i class="fa-solid fa-rotate"></i>
+                    <span>Rondas completadas:</span> <strong id="breath-rounds">0</strong>
                 </div>
             </div>
         </div>
@@ -219,26 +243,26 @@
         </header>
         <!-- Sub-tabs -->
         <div class="level-tabs">
-            <button class="level-tab active" onclick="showHabitSection('entrenamiento')">Entreno</button>
-            <button class="level-tab" onclick="showHabitSection('nutricion')">Nutrición</button>
-            <button class="level-tab" onclick="showHabitSection('mente')">Mente</button>
-            <button class="level-tab" onclick="showHabitSection('sueno')">Sueño</button>
+            <button class="level-tab active" onclick="showHabitSection('entrenamiento')" data-t="hab_train">Entreno</button>
+            <button class="level-tab" onclick="showHabitSection('nutricion')" data-t="hab_nutri">Nutrición</button>
+            <button class="level-tab" onclick="showHabitSection('mente')" data-t="hab_mind">Mente</button>
+            <button class="level-tab" onclick="showHabitSection('sueno')" data-t="hab_sleep">Sueño</button>
         </div>
         <div class="page-content">
             <div class="habit-section active" id="habit-entrenamiento">
-                <div class="section-label">Entrenamiento diario</div>
+                <div class="section-label" data-t="daily_train">Entrenamiento diario</div>
                 <div class="habit-list" id="habits-entrenamiento"></div>
             </div>
             <div class="habit-section hidden" id="habit-nutricion">
-                <div class="section-label">Nutrición óptima</div>
+                <div class="section-label" data-t="opt_nutri">Nutrición óptima</div>
                 <div class="habit-list" id="habits-nutricion"></div>
             </div>
             <div class="habit-section hidden" id="habit-mente">
-                <div class="section-label">Mentalidad de campeón</div>
+                <div class="section-label" data-t="champ_mind">Mentalidad de campeón</div>
                 <div class="habit-list" id="habits-mente"></div>
             </div>
             <div class="habit-section hidden" id="habit-sueno">
-                <div class="section-label">Recuperación y sueño</div>
+                <div class="section-label" data-t="recov_sleep">Recuperación y sueño</div>
                 <div class="habit-list" id="habits-sueno"></div>
             </div>
         </div>
@@ -252,38 +276,38 @@
         </header>
         <!-- Sub-tabs -->
         <div class="level-tabs">
-            <button class="level-tab active" onclick="showProgressSection('stats')">Stats</button>
-            <button class="level-tab" onclick="showProgressSection('historial')">Historial</button>
+            <button class="level-tab active" onclick="showProgressSection('stats')" data-t="stats_lbl">Stats</button>
+            <button class="level-tab" onclick="showProgressSection('historial')" data-t="history_lbl">Historial</button>
         </div>
         <div class="page-content">
             <div class="progress-section active" id="progress-stats">
                 <div class="stats-grid">
                     <div class="stat-box">
                         <span class="stat-num" id="stat-days">0</span>
-                        <span class="stat-label">Días seguidos</span>
+                        <span class="stat-label" data-t="days_streak">Días seguidos</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-num" id="stat-habits">0</span>
-                        <span class="stat-label">Hábitos hoy</span>
+                        <span class="stat-label" data-t="habits_today">Hábitos hoy</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-num" id="stat-rounds">0</span>
-                        <span class="stat-label">Rondas respiración</span>
+                        <span class="stat-label" data-t="breath_rounds">Rondas respiración</span>
                     </div>
                 </div>
                 <div class="detail-card" style="margin-top:20px;">
-                    <h3>🔥 Racha de Éxito</h3>
+                    <h3 data-t="streak_title">🔥 Racha de Éxito</h3>
                     <div class="streak-bar">
                         <div class="streak-fill" id="streak-fill"></div>
                     </div>
-                    <p style="font-size:0.8rem;opacity:0.6;margin-top:8px;">Meta: 7 días seguidos</p>
+                    <p style="font-size:0.8rem;opacity:0.6;margin-top:8px;" data-t="streak_goal">Meta: 7 días seguidos</p>
                 </div>
             </div>
             <div class="progress-section hidden" id="progress-historial">
                 <div class="detail-card">
-                    <h3>📅 Actividad Reciente</h3>
+                    <h3 data-t="recent_activity">📅 Actividad Reciente</h3>
                     <div id="history-list">
-                        <p style="opacity:0.6; font-size:0.9rem; margin-top:10px;">Aquí aparecerán tus sesiones completadas.</p>
+                        <p style="opacity:0.6; font-size:0.9rem; margin-top:10px;" data-t="no_sessions">Aquí aparecerán tus sesiones completadas.</p>
                     </div>
                 </div>
             </div>
@@ -294,66 +318,75 @@
     <div class="screen hidden" id="screen-calculator">
         <header class="glass-header">
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
-            <h1 data-t="calculator">Calculadora Temporal</h1>
+            <h1 data-t="calculator">Calculadora</h1>
         </header>
         <div class="page-content">
-            <div class="calc-form">
+            <div class="calc-form glass-premium">
                 <div class="calc-field">
-                    <label>Peso (kg)</label>
+                    <label data-t="weight_lbl">Peso (kg)</label>
                     <input type="number" id="calc-weight" placeholder="70" min="30" max="300">
                 </div>
                 <div class="calc-field">
-                    <label>Altura (cm)</label>
+                    <label data-t="height_lbl">Altura (cm)</label>
                     <input type="number" id="calc-height" placeholder="170" min="100" max="250">
                 </div>
                 <div class="calc-field">
-                    <label>Edad (años)</label>
+                    <label data-t="age_lbl">Edad (años)</label>
                     <input type="number" id="calc-age" placeholder="25" min="10" max="100">
                 </div>
                 <div class="calc-field">
-                    <label>Sexo</label>
+                    <label data-t="sex_lbl">Sexo</label>
                     <div class="calc-radio">
-                        <label><input type="radio" name="calc-sex" value="m" checked> Hombre</label>
-                        <label><input type="radio" name="calc-sex" value="f"> Mujer</label>
+                        <label><input type="radio" name="calc-sex" value="m" checked> <span data-t="male">Hombre</span></label>
+                        <label><input type="radio" name="calc-sex" value="f"> <span data-t="female">Mujer</span></label>
                     </div>
                 </div>
-                <button class="btn-calc" onclick="calculateBMI()"><i class="fa-solid fa-calculator"></i> Calcular</button>
+                <button class="btn-calc premium-btn" onclick="calculateBMI()"><i class="fa-solid fa-calculator"></i> <span data-t="calc_btn">Calcular</span></button>
             </div>
             <!-- RESULTS -->
             <div class="calc-results hidden" id="calc-results">
                 <div class="calc-bmi-display">
                     <div class="bmi-circle" id="bmi-circle">
                         <span id="bmi-value">--</span>
-                        <small>IMC</small>
+                        <small data-t="imc_lbl">IMC</small>
                     </div>
                     <div class="bmi-cat" id="bmi-cat">--</div>
+                    <!-- Visual Gauge -->
+                    <div class="bmi-gauge-wrap">
+                        <div class="bmi-gauge-bar">
+                            <div class="bmi-gauge-marker" id="bmi-marker"></div>
+                        </div>
+                        <div class="bmi-gauge-labels">
+                            <span data-t="bmi_under">Bajo</span>
+                            <span data-t="bmi_normal">Normal</span>
+                            <span data-t="bmi_over">Sobre</span>
+                            <span data-t="bmi_obese">Obeso</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="calc-grid">
                     <div class="calc-stat-box">
                         <span id="calc-ideal">--</span>
-                        <small>Peso ideal (kg)</small>
+                        <small data-t="ideal_weight">Peso ideal (kg)</small>
                     </div>
                     <div class="calc-stat-box">
                         <span id="calc-fat">--</span>
-                        <small>% Grasa est.</small>
+                        <small data-t="fat_perc">% Grasa est.</small>
                     </div>
                     <div class="calc-stat-box">
                         <span id="calc-bmr">--</span>
-                        <small>Calorías base</small>
+                        <small data-t="bmr_lbl">Calorías base</small>
                     </div>
                     <div class="calc-stat-box">
                         <span id="calc-active">--</span>
-                        <small>Cal activo</small>
+                        <small data-t="active_cal">Cal activo</small>
                     </div>
                 </div>
                 <div class="detail-card" style="margin-top:14px">
-                    <h3>Recomendación</h3>
-                    <p id="calc-advice"></p>
+                    <h3 data-t="rec_lbl">Recomendación</h3>
+                    <p id="calc-advice" class="f-advice"></p>
                 </div>
             </div>
-        </div>
-    </div>
-
         </div>
     </div>
 
@@ -366,10 +399,22 @@
                 <span id="gym-count-sub" class="header-sub">0 ejercicios disponibles</span>
             </div>
         </header>
-        <div class="level-tabs" id="gym-level-tabs">
-            <button class="level-tab active" data-level="musculacion" onclick="filterGym(this)">Musculación</button>
-            <button class="level-tab" data-level="fuerza" onclick="filterGym(this)">Fuerza</button>
-            <button class="level-tab" data-level="hipertrofia" onclick="filterGym(this)">Hipertrofia</button>
+        <!-- Extended Filters -->
+        <div class="filter-panel" style="background: rgba(0,0,0,0.1); border-bottom: 1px solid var(--border); margin-bottom: 15px; padding-top: 15px;">
+            <div class="filter-label" style="font-size: 0.75rem; color: var(--blue); padding: 0 20px 5px; font-weight: 800; text-transform: uppercase;">Objetivo Príncipal</div>
+            <div class="level-tabs" id="gym-cat-tabs" style="padding-bottom: 10px;">
+                <button class="level-tab active" data-cat="Musculación" onclick="filterGymCat(this)" data-t="gym_musc">Musculación</button>
+                <button class="level-tab" data-cat="Fuerza" onclick="filterGymCat(this)" data-t="gym_force">Fuerza</button>
+                <button class="level-tab" data-cat="Hipertrofia" onclick="filterGymCat(this)" data-t="gym_hyper">Hipertrofia</button>
+            </div>
+            
+            <div class="filter-label" style="font-size: 0.75rem; color: var(--primary); padding: 5px 20px 5px; font-weight: 800; text-transform: uppercase;">Dificultad</div>
+            <div class="level-tabs" id="gym-level-tabs" style="padding-bottom: 15px;">
+                <button class="level-tab active" data-level="principiante" onclick="filterGymLevel(this)" data-t="lvl_beg">Principiante</button>
+                <button class="level-tab" data-level="intermedio" onclick="filterGymLevel(this)" data-t="lvl_int">Intermedio</button>
+                <button class="level-tab" data-level="avanzado" onclick="filterGymLevel(this)" data-t="lvl_adv">Avanzado</button>
+                <button class="level-tab" data-level="elite" onclick="filterGymLevel(this)" data-t="lvl_elite">Élite</button>
+            </div>
         </div>
         <div class="exercise-list" id="gym-list"></div>
     </div>
@@ -382,31 +427,27 @@
         </header>
         <div class="page-content">
             <!-- DISTANCE TRACKER -->
-            <div class="detail-card run-tracker">
+            <div class="detail-card run-tracker glass-premium">
                 <h3 data-t="run_log">Registro de Carrera</h3>
                 <div class="run-input-group">
                     <input type="number" id="run-km" placeholder="0.0" step="0.1">
                     <span>km</span>
                     <button class="btn-rest-start" onclick="logRun()"><i class="fa-solid fa-plus"></i></button>
                 </div>
-                <p class="run-total">Total: <strong id="run-total-km">0.0</strong> km</p>
+                <p class="run-total"><span data-t="total_lbl">Total: </span><strong id="run-total-km">0.0</strong> km</p>
             </div>
             <!-- SECTIONS -->
             <div class="run-tabs">
-                <button class="level-tab active" onclick="showRunSec('stretch')">Estiramiento</button>
-                <button class="level-tab" onclick="showRunSec('hydra')">Hidratación</button>
+                <button class="level-tab active" onclick="showRunSec('stretch')" data-t="run_stretch">Estiramiento</button>
+                <button class="level-tab" onclick="showRunSec('hydra')" data-t="run_hydra">Hidratación</button>
             </div>
             <div id="run-stretch" class="run-section active">
                 <div class="habit-list" id="run-stretch-list"></div>
             </div>
             <div id="run-hydra" class="run-section hidden">
-                <div class="detail-card">
+                <div class="detail-card glass-premium">
                     <h3 data-t="water_tips">Tips de Hidratación</h3>
-                    <ul class="water-tips">
-                        <li>Bebé 200ml cada 15 min.</li>
-                        <li>Electrolitos para 10km+.</li>
-                        <li>Hidrátate 2h antes de correr.</li>
-                    </ul>
+                    <ul class="water-tips" id="water-tips-list"></ul>
                 </div>
             </div>
         </div>
@@ -419,21 +460,24 @@
             <h1 data-t="settings">Ajustes</h1>
         </header>
         <div class="page-content">
-            <div class="detail-card">
-                <h3>Idioma de la App</h3>
+            <div class="detail-card glass-premium">
+                <h3 data-t="app_lang">Idioma de la App</h3>
                 <div class="lang-selector" style="margin-top:10px">
-                    <select id="lang-select-set" onchange="changeLanguage(this.value)" style="width:100%; padding:12px; font-size:1rem; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:#fff; border-radius:12px">
+                    <select id="lang-select-set" onchange="changeLanguage(this.value)" class="premium-select">
                         <option value="es" selected>🇪🇸 Español</option>
                         <option value="en">🇺🇸 English</option>
                         <option value="fr">🇫🇷 Français</option>
                         <option value="pt">🇧🇷 Português</option>
+                        <option value="de">🇩🇪 Deutsch</option>
+                        <option value="it">🇮🇹 Italiano</option>
+                        <option value="jp">🇯🇵 日本語</option>
                     </select>
                 </div>
             </div>
-            <div class="detail-card">
-                <h3>Datos Locales</h3>
-                <p style="font-size:0.8rem; margin-bottom:12px">Esto borrará todo tu progreso local (rachas, km, hábitos).</p>
-                <button class="btn-calc" style="background:#ff5252; width:100%" onclick="resetAllData()"><i class="fa-solid fa-trash"></i> Resetear Aplicación</button>
+            <div class="detail-card glass-premium">
+                <h3 data-t="local_data">Datos Locales</h3>
+                <p style="font-size:0.8rem; margin-bottom:12px" data-t="reset_desc">Esto borrará todo tu progreso local.</p>
+                <button class="btn-calc premium-btn" style="background:#ff5252;" onclick="resetAllData()"><i class="fa-solid fa-trash"></i> <span data-t="reset_btn">Resetear Aplicación</span></button>
             </div>
         </div>
     </div>
@@ -444,35 +488,38 @@
             <button class="back-btn" onclick="goScreen('screen-home')"><i class="fa-solid fa-chevron-left"></i></button>
             <div class="header-titles">
                 <h1 data-t="packs">Master Packs 1h</h1>
-                <span class="header-sub">Sincronización Científica</span>
+                <span class="header-sub" data-t="sci_sync">Sincronización Científica</span>
             </div>
         </header>
         <div class="page-content">
             <div class="pack-grid">
-                <div class="pack-card" onclick="loadPack('full-sci')">
+                <div class="pack-card glass-premium" onclick="loadPack('full-sci')">
                     <i class="fa-solid fa-dna"></i>
-                    <strong>Protocolo FullBody</strong>
-                    <span data-t="sci_desc">Eje Hormonal + Potencia</span>
+                    <strong data-t="proto_full">Protocolo FullBody</strong>
+                    <span data-t="sci_eff">Eje Hormonal Pro</span>
                 </div>
-                <div class="pack-card" onclick="loadPack('upper-sci')">
+                <div class="pack-card glass-premium" onclick="loadPack('upper-sci')">
                     <i class="fa-solid fa-shield-heart"></i>
-                    <strong>Torso Hipertrofia</strong>
-                    <span data-t="sci_desc">Volumen Basado en Evidencia</span>
+                    <strong data-t="proto_upper">Torso Hipertrofia</strong>
+                    <span data-t="sci_eff">Basado en Evidencia</span>
                 </div>
-                <div class="pack-card" onclick="loadPack('lower-sci')">
+                <div class="pack-card glass-premium" onclick="loadPack('lower-sci')">
                     <i class="fa-solid fa-bolt-lightning"></i>
-                    <strong>Tren Inferior Pro</strong>
-                    <span data-t="sci_desc">Mecánica Explosiva</span>
+                    <strong data-t="proto_lower">Tren Inferior Pro</strong>
+                    <span data-t="sci_eff">Mecánica Explosiva</span>
                 </div>
-                <div class="pack-card" onclick="loadPack('hybrid-sci')">
+                <div class="pack-card glass-premium" onclick="loadPack('hybrid-sci')">
                     <i class="fa-solid fa-fire-glow"></i>
-                    <strong>Metabólico 1H</strong>
-                    <span data-t="sci_desc">Máxima Oxidación</span>
+                    <strong data-t="proto_hybrid">Metabólico 1H</strong>
+                    <span data-t="sci_eff">Máxima Oxidación</span>
                 </div>
             </div>
             <div id="pack-exercise-list"></div>
         </div>
     </div>
+
+    <!-- TOAST NOTIFICATION SYSTEM -->
+    <div id="toast-container" class="toast-container"></div>
 
     <!-- SOUND EFFECTS -->
     <audio id="snd-click" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3"></audio>
@@ -480,7 +527,7 @@
 
 </div><!-- end app-container -->
 
-<script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
 <script>
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function(registrations) {
@@ -488,7 +535,7 @@
                 registration.unregister();
             }
         });
-        navigator.serviceWorker.register('sw.js?v=5');
+        navigator.serviceWorker.register('sw.js?v=6');
     }
 </script>
 </body>
