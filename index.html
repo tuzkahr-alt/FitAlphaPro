@@ -247,11 +247,11 @@
         </header>
 
         <!-- Mode Tabs -->
-        <div class="level-tabs" style="padding: 15px 20px; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 30px;">
-            <button class="level-tab active" onclick="showBreathingMode('box')" data-t="box_breath">🟦 Cuadrada</button>
-            <button class="level-tab" onclick="showBreathingMode('478')" data-t="breath_478">🌙 4-7-8</button>
-            <button class="level-tab" onclick="showBreathingMode('fire')" data-t="fire_breath">🔥 Fuego</button>
-            <button class="level-tab" onclick="showBreathingMode('calm')" data-t="calm_breath">🌊 Calma</button>
+        <div class="level-tabs" style="padding: 10px 20px; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 25px; display: flex; overflow-x: auto; flex-wrap: nowrap; justify-content: flex-start; scrollbar-width: none; -webkit-overflow-scrolling: touch;">
+            <button class="level-tab active" style="white-space: nowrap;" onclick="showBreathingMode('box')" data-t="box_breath">🟦 Cuadrada</button>
+            <button class="level-tab" style="white-space: nowrap;" onclick="showBreathingMode('478')" data-t="breath_478">🌙 4-7-8</button>
+            <button class="level-tab" style="white-space: nowrap;" onclick="showBreathingMode('fire')" data-t="fire_breath">🔥 Fuego</button>
+            <button class="level-tab" style="white-space: nowrap;" onclick="showBreathingMode('calm')" data-t="calm_breath">🌊 Calma</button>
         </div>
 
         <div class="page-content breathing-content" style="padding: 0 20px;">
@@ -277,7 +277,7 @@
             <div class="visual-breath-experience">
                 <div class="breath-ring" id="breath-ring">
                     <div class="breath-inner">
-                        <span id="breath-phase">🫁</span>
+                        <span id="breath-phase"><i class="fa-solid fa-dharmachakra" style="font-size:3rem; color:var(--primary); opacity:0.8;"></i></span>
                         <span id="breath-count"></span>
                     </div>
                 </div>
@@ -285,7 +285,7 @@
             <!-- CONTROLS -->
             <div class="breath-controls" style="margin-top:20px; padding-bottom: 30px;">
                 <button class="btn-start premium-btn" id="breath-start-btn" onclick="toggleBreathing()">
-                    <i class="fa-solid fa-play"></i> <span>▶ Iniciar Sesión</span>
+                    <i class="fa-solid fa-play"></i> <span>▶ Iniciar</span>
                 </button>
                 <div class="breath-rounds" style="margin-top:15px; background: rgba(255,255,255,0.05); padding:10px 20px; border-radius:15px;">
                     <i class="fa-solid fa-rotate"></i>

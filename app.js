@@ -548,10 +548,10 @@ function stopBreathing() {
     if(ring) ring.className = 'breath-ring';
     const phaseEl = document.getElementById('breath-phase');
     const countEl = document.getElementById('breath-count');
-    if(phaseEl) phaseEl.innerHTML = '🫁';
+    if(phaseEl) phaseEl.innerHTML = '<i class="fa-solid fa-dharmachakra" style="font-size:3rem; color:var(--primary); opacity:0.8;"></i>';
     if(countEl) countEl.textContent = '';
     const btn = document.getElementById('breath-start-btn');
-    if(btn) btn.innerHTML = `<i class="fa-solid fa-play"></i> <span>▶ Iniciar Sesión</span>`;
+    if(btn) btn.innerHTML = `<i class="fa-solid fa-play"></i> <span>▶ Iniciar</span>`;
     if(btn) btn.classList.remove('breathing-active');
 }
 
