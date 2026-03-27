@@ -538,7 +538,7 @@ function startBreathing() {
     const btn = document.getElementById('breath-start-btn');
     btn.classList.add('breathing-active');
     btn.innerHTML = `<i class="fa-solid fa-stop"></i> <span>⏹ Detener Sesión</span>`;
-    document.getElementById('breath-phase').textContent = '...';
+    document.getElementById('breath-phase').innerHTML = `<i class="fa-solid fa-dharmachakra fa-spin" style="color:#00c9ff; font-size:2.5rem; opacity:0.8;"></i>`;
     executeBreathStep(0);
 }
 
@@ -548,7 +548,7 @@ function stopBreathing() {
     if(ring) ring.className = 'breath-ring';
     const phaseEl = document.getElementById('breath-phase');
     const countEl = document.getElementById('breath-count');
-    if(phaseEl) phaseEl.textContent = '🫁';
+    if(phaseEl) phaseEl.innerHTML = '🫁';
     if(countEl) countEl.textContent = '';
     const btn = document.getElementById('breath-start-btn');
     if(btn) btn.innerHTML = `<i class="fa-solid fa-play"></i> <span>▶ Iniciar Sesión</span>`;
@@ -565,7 +565,7 @@ function executeBreathStep(idx) {
     
     const ring = document.getElementById('breath-ring');
     ring.className = `breath-ring breath-${name}`;
-    document.getElementById('breath-phase').textContent = translations[lang][name];
+    document.getElementById('breath-phase').innerHTML = `<i class="fa-solid fa-dharmachakra fa-spin" style="color:#00c9ff; font-size:2.8rem; margin-bottom: 5px;"></i><br><span style="font-size:1.2rem; font-weight:800; text-transform:uppercase;">${translations[lang][name]}</span>`;
     
     let count = time;
     document.getElementById('breath-count').textContent = count;
