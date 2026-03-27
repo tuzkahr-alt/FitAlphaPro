@@ -620,11 +620,83 @@ function logRun() {
     }
 }
 
+const masterPacks = {
+    'full-sci': {
+        title: "Protocolo FullBody (Eje Hormonal)", desc: "Oxidación máxima. Impacto en todo el cuerpo para liberar testosterona y hormona de crecimiento.",
+        exercises: ['Dominadas Estrictas','Flexiones Clásicas','Sentadillas Clásicas','Soportes Estáticos']
+    },
+    'upper-sci': {
+        title: "Torso Destructor (Hipertrofia)", desc: "Enfoque en pecho, hombros y espalda usando resistencia progresiva y tiempo bajo tensión.",
+        exercises: ['Dominadas Estrictas','Flexiones Clásicas','Fondos en Paralelas','Remo Invertido']
+    },
+    'lower-sci': {
+        title: "Piernas de Titanio (Explosividad)", desc: "Quema de grasa agresiva en el tren inferior. Estimula el metabolismo basal de forma natural.",
+        exercises: ['Sentadillas Clásicas','Soportes Estáticos','Dominadas Estrictas'] // Re-using what we have in DB
+    },
+    'hybrid-sci': {
+        title: "Híbrido Metabólico (Cardio)", desc: "Combinación de calistenia y descansos cortos para generar un entorno V02 Máx extremo.",
+        exercises: ['Flexiones Clásicas','Sentadillas Clásicas'] // Add Burpees if existed, but working with what is safely there
+    }
+};
+
 function loadPack(packId) {
-    showToast("Master Pack Inicializado. Cargando rutinas...");
     playSnd('snd-end');
-    // Demonstration behavior: load specific exercise for the pack
-    setTimeout(() => { showDetail(packId === 'lower-sci' ? 'Sentadillas Clásicas' : 'Flexiones Clásicas', 'cal'); }, 800);
+    const pack = masterPacks[packId];
+    if(!pack) return;
+    
+    document.getElementById('pack-detail-title').textContent = pack.title;
+    document.getElementById('pack-detail-desc').textContent = pack.desc;
+    
+    // Render exercise list for this pack
+    const container = document.getElementById('pack-exercise-list');
+    container.innerHTML = '';
+    
+    pack.exercises.forEach(exName => {
+        // Fetch from baseCal first (we know these exist in baseCal)
+        const d = baseCal.find(e => e.name === exName); 
+        if(d) {
+            container.innerHTML += `
+            <div class="exercise-item" onclick="showDetail('${d.name}', 'cal')">
+                <div class="ex-icon" style="background:var(--primary); color:white; width:50px; height:50px; display:flex; align-items:center; justify-content:center; border-radius:15px; font-size:1.5rem;">${d.icon}</div>
+                <div class="ex-info" style="margin-left:15px;">
+                    <strong>${d.name}</strong>
+                    <div style="font-size:0.75rem; opacity:0.8; margin-top:4px;">Biomecánica Profesional</div>
+                </div>
+                <i class="fa-solid fa-chevron-right" style="opacity:0.5; margin-left:10px;"></i>
+            </div>`;
+        }
+    });
+
+    goScreen('screen-pack-detail');
+}
+
+/* === PWA INSTALLATION === */
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    deferredPrompt = e;
+    // Show the custom install button on the home screen
+    document.getElementById('install-pwa-btn').classList.remove('hidden');
+});
+
+function installPWA() {
+    if (!deferredPrompt) {
+        showToast("✓ La app ya está instalada o tu navegador no lo soporta directamente desde aquí.");
+        return;
+    }
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            console.log('Usuario aceptó instalar la PWA');
+            document.getElementById('install-pwa-btn').classList.add('hidden');
+        } else {
+            console.log('Usuario rechazó instalar la PWA');
+        }
+        deferredPrompt = null;
+    });
 }
 
 /* === BMI LOGIC === */
